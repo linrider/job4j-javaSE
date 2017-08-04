@@ -1,15 +1,18 @@
 package ru.job4j;
 
 /**
- * Class Класс для вывода в консоль фразы "Hello World!"
- * @author vlazin
- * @since 31.07.2017
- * @version 1	
-*/
-
+ * Calculate.
+ *
+ * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class Calculate {
-  public static void main(String[] args) {
-    System.out.println("Hello world! I hope It isn't so boring for you :)");
-  }
-
+    /**
+     * Main.
+     * @param args - args.
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
 }
