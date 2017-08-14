@@ -1,7 +1,7 @@
 package ru.job4j.condition;
 
 /**
- * PointTest.
+ * PointTest - test for task "3.2. Положение точки [#188]"
  *
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
  * @version $Id$

@@ -24,6 +24,8 @@ public class Point {
         return this.y;
     }
 
+
+
     public boolean is(int a, int b) {
         return getY() == a * getX() + b; // используя координаты точки и вычисления функции.
     }
