@@ -1,5 +1,6 @@
 /**
- * Package for max task.
+ * Package for max task "3.4. Максимум из трех чисел [#190]".
+ *
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 0.1

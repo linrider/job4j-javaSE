@@ -14,4 +14,11 @@ public class Max {
         max = first > second ? first : second;
         return max;
     }
+
+    public int max(int first, int second, int third) {
+
+        if (first > second && first > third) return first;
+        else if (second > first && second > third) return second;
+        else return third;
+    }
 }
