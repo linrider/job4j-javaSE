@@ -1,0 +1,31 @@
+package ru.job4j.loop;
+
+import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+/**
+ * Test for Factorial of 5 and 0 "4.2. Создать программу вычисляющую факториал. [#193]".
+ *
+ * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
+public class FactorialTest {
+
+    @Test
+    public void whenCalculateFactorialForFiveThenOneHundreedTwenty() {
+        Factorial factorial = new Factorial();
+        int result = factorial.calc(5);
+        assertThat(result, is(120));
+    }
+
+    @Test
+    public void whenCalculateFactorialForZeroThenOne() {
+        Factorial factorial = new Factorial();
+        int result = factorial.calc(0);
+        assertThat(result, is(1));
+
+    }
+}
