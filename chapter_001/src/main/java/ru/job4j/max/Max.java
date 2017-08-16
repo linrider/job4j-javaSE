@@ -1,7 +1,7 @@
 package ru.job4j.max;
 
 /**
- * Max.
+ * Max finally.
  *
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
  * @version $Id$
