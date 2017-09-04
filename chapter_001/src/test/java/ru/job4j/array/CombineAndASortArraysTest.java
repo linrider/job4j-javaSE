@@ -18,7 +18,7 @@ public class CombineAndASortArraysTest {
         BubbleSort bubbleSort = new BubbleSort();
         int[] testArray1 = {1, 3, 5, 7, 9};
         int[] testArray2 = {0, 2, 4, 6, 8};
-        int[] resultArray = bubbleSort.sort(combineArrays.combine(testArray1, testArray2));
+        int[] resultArray = combineArrays.combine(testArray1, testArray2);
         int[] expectedArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         assertThat(resultArray, is(expectedArray));
     }
