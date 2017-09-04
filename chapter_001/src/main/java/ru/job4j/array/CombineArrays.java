@@ -13,6 +13,7 @@ package ru.job4j.array;
      * @param array1 - array[].
      * @param array2 - array[].
      */
+
     public int[] combine(int[] array1, int[] array2) {
         int[] combinedArray = new int[array1.length + array2.length];
 
@@ -32,4 +33,5 @@ package ru.job4j.array;
 
         return combinedArray;
     }
+
 }
