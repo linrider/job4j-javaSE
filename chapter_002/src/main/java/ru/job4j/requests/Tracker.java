@@ -37,6 +37,7 @@ public class Tracker {
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 items[i] = item;
+                break;
             }
         }
     }
@@ -48,7 +49,13 @@ public class Tracker {
     public void delete(Item item) {
         String id = item.getId();
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) items[i] = null;
+            if (items[i] != null && items[i].getId().equals(id)) {
+                for (int j = i; j < items.length - 1; j++) {
+                    items[j] = items[j + 1];
+                }
+                if (items[items.length - 1] != null) { items[items.length - 1] = null; }
+            }
+            break;
         }
     }
     /**
@@ -58,16 +65,15 @@ public class Tracker {
     public Item[] findAll() {
         int count = 0;
         for (Item x : items) {
-            if (x != null) count++;
+            if (x != null) {
+                count++;
+            }
         }
 
         Item[] list = new Item[count];
         int i = 0;
         for (Item item : items) {
-            if (item != null) {
-                list[i] = item;
-                i++;
-            }
+            if (item != null) { list[i++] = item; }
         }
         return list;
     }
@@ -85,8 +91,9 @@ public class Tracker {
         Item[] list = new Item[count];
         int i = 0;
         for (Item item : items) {
-            if (item != null && item.getName().equals(key)) list[i] = item;
-            i++;
+            if (item != null && item.getName().equals(key)) {
+                list[i++] = item;
+            }
         }
         return list;
     }
