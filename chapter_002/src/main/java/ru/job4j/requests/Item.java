@@ -11,17 +11,20 @@ public class Item {
     private String id;
     private String name;
     private String description;
-    private String comments;
+//    private String comments;
     private long create;
 
-//    public Item(int count) {
-//
-//    }
-    public Item(String name, String description, long create) {
+    /**
+     * @param name
+     * @param description
+     * @param create
+     */
+
+    Item(String name, String description, long create) {
         this.name = name;
         this.description = description;
         this.create = create;
-        this.comments = comments;
+        //this.comments = comments;
     }
 
     /**
@@ -63,4 +66,10 @@ public class Item {
     public long getCreate() {
         return this.create;
     }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.description + " " + this.create + " " + this.id;
+    }
 }
+

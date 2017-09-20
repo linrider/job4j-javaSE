@@ -22,7 +22,7 @@ public class Tracker {
         return String.valueOf(System.currentTimeMillis() + RN.nextLong());
     }
 
-    public Item add(Item item) {
+    protected Item add(Item item) {
         item.setId(this.generateId());
         this.items[position++] = item;
         return item;
@@ -32,7 +32,7 @@ public class Tracker {
      * update.
      * @param item - Item.
      */
-    public void update(Item item) {
+    protected void update(Item item) {
         String id = item.getId();
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
@@ -46,34 +46,27 @@ public class Tracker {
      * delete.
      * @param item - Item.
      */
-    public void delete(Item item) {
+    protected void delete(Item item) {
         String id = item.getId();
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
                 for (int j = i; j < items.length - 1; j++) {
                     items[j] = items[j + 1];
                 }
                 if (items[items.length - 1] != null) { items[items.length - 1] = null; }
+                break;
             }
-            break;
         }
+        position--;
     }
     /**
      * findAll.
      * @return list - Item[].
      */
-    public Item[] findAll() {
-        int count = 0;
-        for (Item x : items) {
-            if (x != null) {
-                count++;
-            }
-        }
-
-        Item[] list = new Item[count];
-        int i = 0;
-        for (Item item : items) {
-            if (item != null) { list[i++] = item; }
+    protected Item[] findAll() {
+        Item[] list = new Item[position];
+        for (int i = 0; i < position; i++) {
+            list[i] = items[i];
         }
         return list;
     }
@@ -82,7 +75,7 @@ public class Tracker {
      * @param key - String.
      * @return list - Item[].
      */
-    public Item[] findByName(String key) {
+    protected Item[] findByName(String key) {
         int count = 0;
         for (Item item : items) {
             if (item != null && item.getName().equals(key)) count++;
