@@ -1,4 +1,6 @@
-package ru.job4j.requests;
+package ru.job4j.start;
+
+import java.util.Random;
 /**
  * Tracker for task "2. Реализовать класс Tracker [#396]".
  *
@@ -6,9 +8,6 @@ package ru.job4j.requests;
  * @version $Id$
  * @since 12.09.17
  */
-
-import java.util.Random;
-
 public class Tracker {
     private Item[] items = new Item[100];
     private int position = 0;
@@ -53,7 +52,9 @@ public class Tracker {
                 for (int j = i; j < items.length - 1; j++) {
                     items[j] = items[j + 1];
                 }
-                if (items[items.length - 1] != null) { items[items.length - 1] = null; }
+                if (items[items.length - 1] != null) {
+                    items[items.length - 1] = null;
+                }
                 break;
             }
         }
@@ -78,7 +79,9 @@ public class Tracker {
     protected Item[] findByName(String key) {
         int count = 0;
         for (Item item : items) {
-            if (item != null && item.getName().equals(key)) count++;
+            if (item != null && item.getName().equals(key)) {
+                count++;
+            }
         }
 
         Item[] list = new Item[count];

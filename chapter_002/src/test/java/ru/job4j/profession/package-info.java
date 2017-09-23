@@ -1,7 +1,7 @@
 /**
- * Package for requests task.
+ * Package for profession task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
- * @since 12.09.17
+ * @since 07.09.17
  */
-package ru.job4j.requests;
+package ru.job4j.profession;

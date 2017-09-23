@@ -1,4 +1,10 @@
-package ru.job4j.requests;
+package ru.job4j.start;
+
+import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 /**
  * Test for Tracker "2. Реализовать класс Tracker [#396]".
  *
@@ -6,14 +12,10 @@ package ru.job4j.requests;
  * @version $Id$2. Реализовать класс Tracker [#396]
  * @since 12.09.17
  */
-import org.junit.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 public class TrackerTest {
-/*
-* test for findByName method
- */
+    /**
+     * test for findByName method.
+     */
     @Test
     public void  whenAddNameThenReturnName() {
         Tracker tracker = new Tracker();
@@ -22,22 +24,22 @@ public class TrackerTest {
         Item[] itemsTest = tracker.findByName(itemTest.getName());
         assertThat(itemsTest[0].getName(), is("test"));
     }
-/*
-* test for update method
- */
+    /**
+     * test for update method.
+     */
     @Test
     public void whenUpdateNameThenReturnNewName() {
-    Tracker tracker = new Tracker();
-    Item previous = new Item("test1", "testDescription", 123L);
-    tracker.add(previous);
-    Item next = new Item("test2", "testDescription2", 1234L);
-    next.setId(previous.getId());
-    tracker.update(next);
-    assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
+        Tracker tracker = new Tracker();
+        Item previous = new Item("test1", "testDescription", 123L);
+        tracker.add(previous);
+        Item next = new Item("test2", "testDescription2", 1234L);
+        next.setId(previous.getId());
+        tracker.update(next);
+        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
-/*
-* test for delete method
- */
+    /**
+     * test for delete method.
+     */
     @Test
     public void whenDeleteItemThenReturnZeroLengthArray() {
         Tracker tracker = new Tracker();
@@ -47,9 +49,9 @@ public class TrackerTest {
         assertThat(tracker.findByName(itemTest.getName()).length, is(0));
 
     }
-/*
-* test for findAll method
- */
+    /**
+    * test for findAll method.
+     */
     @Test
     public void whenFindNotEmtyItemsThenReturnArrayOfItems() {
         Tracker tracker = new Tracker();
@@ -57,9 +59,9 @@ public class TrackerTest {
         tracker.add(itemTest);
         assertThat(tracker.findAll().length, is(1));
     }
-/*
-* test for findById method
- */
+    /**
+    * test for findById method.
+     */
     @Test
     public void whenFindByIdThenReturnName() {
         Tracker tracker = new Tracker();

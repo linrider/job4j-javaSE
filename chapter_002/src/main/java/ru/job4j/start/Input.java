@@ -1,4 +1,4 @@
-package ru.job4j.requests;
+package ru.job4j.start;
 /**
  * Input.
  *

@@ -4,4 +4,4 @@
  * @version $Id$
  * @since 07.09.17
  */
-package ru.job4j;
+package ru.job4j.profession;

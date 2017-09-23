@@ -1,4 +1,8 @@
-package ru.job4j;
+package ru.job4j.profession;
+
+import org.junit.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 /**
  * Test for Profession "1. Реализация профессий в коде [#6837]".
  *
@@ -6,13 +10,11 @@ package ru.job4j;
  * @version $Id$
  * @since 0.1
  */
-
-import org.junit.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 public class ProfessionTest {
 
+    /**
+     * whenDoctorHealsPacient.
+     */
     @Test
     public void whenDoctorHealsPacient() {
         Profession.Doctor doctor = new Profession.Doctor("Healer", 45, 20, "doctor");
@@ -22,6 +24,9 @@ public class ProfessionTest {
         assertThat(result, is(expectation));
     }
 
+    /**
+     * whenTeacherTeachesStudent.
+     */
     @Test
     public void whenTeacherTeachesStudent() {
         Profession.Teacher teacher = new Profession.Teacher("Guru", 38, 12, "nothing");
@@ -31,8 +36,11 @@ public class ProfessionTest {
         assertThat(result, is(expectation));
     }
 
+    /**
+     * whenEngineerDevelopsProject.
+     */
     @Test
-    public void whenEngeneerDevelopsProject() {
+    public void whenEngineerDevelopsProject() {
         Profession.Engineer  engeneer = new Profession.Engineer("Garin", 35, 10, 3);
         Profession.Task project = new Profession.Task("hyperboloid");
         String result = engeneer.design(project);

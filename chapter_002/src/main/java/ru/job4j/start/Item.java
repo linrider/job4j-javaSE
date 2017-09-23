@@ -1,4 +1,4 @@
-package ru.job4j.requests;
+package ru.job4j.start;
 /**
  * Item for task "2. Реализовать класс Tracker [#396]".
  *
@@ -11,20 +11,19 @@ public class Item {
     private String id;
     private String name;
     private String description;
-//    private String comments;
     private long create;
 
     /**
-     * @param name
-     * @param description
-     * @param create
+     * Item constructor.
+     * @param name - String.
+     * @param description - String.
+     * @param create - long.
      */
 
     Item(String name, String description, long create) {
         this.name = name;
         this.description = description;
         this.create = create;
-        //this.comments = comments;
     }
 
     /**

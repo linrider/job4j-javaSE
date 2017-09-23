@@ -1,4 +1,7 @@
-package ru.job4j.requests;
+package ru.job4j.start;
+
+
+import java.util.Scanner;
 /**
  * ConsoleInput.
  *
@@ -6,13 +9,11 @@ package ru.job4j.requests;
  * @version $Id$
  * @since 19.09.17
  */
-
-import java.util.Scanner;
-
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     /**
+     * ask.
      * @param question - String.
      * @return String
      */
