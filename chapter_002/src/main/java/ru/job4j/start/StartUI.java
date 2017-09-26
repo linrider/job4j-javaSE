@@ -7,6 +7,9 @@ package ru.job4j.start;
  * @since 19.09.17
  */
 public class StartUI {
+    private Input input;
+    private Tracker tracker;
+
     private static final String ADD = "0";
     private static final String SHOW_ALL = "1";
     private static final String EDIT = "2";
@@ -15,15 +18,26 @@ public class StartUI {
     private static final String NAME = "5";
     private static final String EXIT = "6";
 
+    public StartUI() {
+
+    }
+
+    public StartUI(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+
+    }
+
     /**
      * Main.
      * @param args - String[].
      */
     public static void main(String[] args) {
-        StartUI startUI = new StartUI();
-        ConsoleInput input = new ConsoleInput();
-        String action;
         Tracker tracker = new Tracker();
+        ConsoleInput input = new ConsoleInput();
+        StartUI startUI = new StartUI();
+
+        String action;
 
         while (true) {
             startUI.showMenu();
@@ -68,8 +82,7 @@ public class StartUI {
      * @param input   - ConsoleInput.
      */
     private void addNewItem(Tracker tracker, ConsoleInput input) {
-        String id = tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "),
-                Long.parseLong(input.ask("Enter a date: ")))).getId();
+        String id = tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "), input.ask("Enter a date: "))).getId();
         System.out.println("Your ID: " + id);
     }
 
@@ -80,7 +93,7 @@ public class StartUI {
      */
     private void editItem(Tracker tracker, ConsoleInput input) {
         tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "),
-                Long.parseLong(input.ask("Enter a date: ")))).setId(input.ask("Enter item's Id: "));
+                input.ask("Enter a date: "))).setId(input.ask("Enter item's Id: "));
     }
 
     /**

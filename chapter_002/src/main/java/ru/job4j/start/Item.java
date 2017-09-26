@@ -20,10 +20,10 @@ public class Item {
      * @param create - long.
      */
 
-    Item(String name, String description, long create) {
+    Item(String name, String description, String create) {
         this.name = name;
         this.description = description;
-        this.create = create;
+        this.create = Long.parseLong(create);
     }
 
     /**

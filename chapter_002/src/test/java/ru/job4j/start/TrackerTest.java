@@ -19,7 +19,7 @@ public class TrackerTest {
     @Test
     public void  whenAddNameThenReturnName() {
         Tracker tracker = new Tracker();
-        Item itemTest = new Item("test", "testDescription", 123L);
+        Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
         Item[] itemsTest = tracker.findByName(itemTest.getName());
         assertThat(itemsTest[0].getName(), is("test"));
@@ -30,9 +30,9 @@ public class TrackerTest {
     @Test
     public void whenUpdateNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1", "testDescription", 123L);
+        Item previous = new Item("test1", "testDescription", "123");
         tracker.add(previous);
-        Item next = new Item("test2", "testDescription2", 1234L);
+        Item next = new Item("test2", "testDescription2", "1234");
         next.setId(previous.getId());
         tracker.update(next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
@@ -43,7 +43,7 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemThenReturnZeroLengthArray() {
         Tracker tracker = new Tracker();
-        Item itemTest = new Item("test", "testDescription", 123L);
+        Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
         tracker.delete(itemTest);
         assertThat(tracker.findByName(itemTest.getName()).length, is(0));
@@ -55,7 +55,7 @@ public class TrackerTest {
     @Test
     public void whenFindNotEmtyItemsThenReturnArrayOfItems() {
         Tracker tracker = new Tracker();
-        Item itemTest = new Item("test", "testDescription", 123L);
+        Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
         assertThat(tracker.findAll().length, is(1));
     }
@@ -65,7 +65,7 @@ public class TrackerTest {
     @Test
     public void whenFindByIdThenReturnName() {
         Tracker tracker = new Tracker();
-        Item itemTest = new Item("test", "testDescription", 123L);
+        Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
         assertThat(tracker.findById(itemTest.getId()).getName(), is("test"));
     }
