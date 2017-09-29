@@ -27,6 +27,34 @@ public class StartUI {
         this.tracker = tracker;
 
     }
+    public void init() {
+        String action;
+
+        while (true) {
+            this.showMenu();
+            action = input.ask("Select: ");
+
+            if (action.equals(ADD)) {
+                this.addNewItem(tracker, input);
+            } else if (action.equals(SHOW_ALL)) {
+                showAllItems(tracker);
+            } else if (action.equals(EDIT)) {
+                editItem(tracker, input);
+            } else if (action.equals(DEL)) {
+                deleteItem(tracker, input);
+            } else if (action.equals((ID))) {
+                findItemById(tracker, input);
+            } else if (action.equals(NAME)) {
+                findItemsByName(tracker, input);
+            } else if (action.equals((EXIT))) {
+                break;
+            } else {
+                System.out.println("Invalid symbol. Try again.");
+            }
+        }
+
+
+    }
 
     /**
      * Main.
@@ -34,33 +62,10 @@ public class StartUI {
      */
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
-        ConsoleInput input = new ConsoleInput();
-        StartUI startUI = new StartUI();
+        Input input = new ConsoleInput();
+        new StartUI(input, tracker).init();
 
-        String action;
 
-        while (true) {
-            startUI.showMenu();
-            action = input.ask("Select: ");
-
-            if (action.equals(ADD)) {
-                startUI.addNewItem(tracker, input);
-            } else if (action.equals(SHOW_ALL)) {
-                startUI.showAllItems(tracker);
-            } else if (action.equals(EDIT)) {
-                startUI.editItem(tracker, input);
-            } else if (action.equals(DEL)) {
-                startUI.deleteItem(tracker, input);
-            } else if (action.equals((ID))) {
-                startUI.findItemById(tracker, input);
-            } else if (action.equals(NAME)) {
-                startUI.findItemsByName(tracker, input);
-            } else if (action.equals((EXIT))) {
-                break;
-            } else {
-                System.out.println("Invalid symbol. Try again.");
-            }
-        }
     }
 
     /**
@@ -81,7 +86,7 @@ public class StartUI {
      * @param tracker - Tracker.
      * @param input   - ConsoleInput.
      */
-    private void addNewItem(Tracker tracker, ConsoleInput input) {
+    private void addNewItem(Tracker tracker, Input input) {
         String id = tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "), input.ask("Enter a date: "))).getId();
         System.out.println("Your ID: " + id);
     }
@@ -91,7 +96,7 @@ public class StartUI {
      * @param tracker - Tracker.
      * @param input   - ConsoleInput.
      */
-    private void editItem(Tracker tracker, ConsoleInput input) {
+    private void editItem(Tracker tracker, Input input) {
         tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "),
                 input.ask("Enter a date: "))).setId(input.ask("Enter item's Id: "));
     }
@@ -101,7 +106,7 @@ public class StartUI {
      * @param tracker - Tracker.
      * @param input   - ConsoleInput.
      */
-    private void deleteItem(Tracker tracker, ConsoleInput input) {
+    private void deleteItem(Tracker tracker, Input input) {
         String id = input.ask("Enter deleting item's Id: ");
         if (tracker.findById(id) != null) {
             Item item = tracker.findById(id);
@@ -117,7 +122,7 @@ public class StartUI {
      * @param tracker - Tracker.
      * @param input   - ConsoleInput.
      */
-    private void findItemById(Tracker tracker, ConsoleInput input) {
+    private void findItemById(Tracker tracker, Input input) {
         Item item = tracker.findById(input.ask("Enter searching item's Id: "));
         if (item != null) {
             System.out.println(item.toString());
@@ -128,11 +133,10 @@ public class StartUI {
 
     /**
      * findItemsByName.
-     *
-     * @param tracker - Tracker.
+     *  @param tracker - Tracker.
      * @param input   - ConsoleInput.
      */
-    private void findItemsByName(Tracker tracker, ConsoleInput input) {
+    private void findItemsByName(Tracker tracker, Input input) {
         Item[] items = tracker.findByName(input.ask("Enter searching name: "));
         if (items.length != 0) {
             for (Item item : items) {
