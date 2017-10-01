@@ -34,10 +34,10 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item("John Silver", "engage in the service", "1742"));
         //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"1", item.getId(), "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "6"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        assertThat(tracker.findById(item.getId()).getName(), is("John Silver"));
+        assertThat(tracker.findById(item.getId()).getName(), is("test name"));
     }
 }
