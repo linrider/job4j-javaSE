@@ -72,7 +72,7 @@ public class StartUI {
      * showMenu.
      */
     private void showMenu() {
-        System.out.println("0. Add new Item");
+        System.out.println("0. Add new item");
         System.out.println("1. Show all items");
         System.out.println("2. Edit item");
         System.out.println("3. Delete item");
@@ -97,8 +97,7 @@ public class StartUI {
      * @param input   - ConsoleInput.
      */
     private void editItem(Tracker tracker, Input input) {
-        tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "),
-                input.ask("Enter a date: "))).setId(input.ask("Enter item's Id: "));
+        tracker.update(new Item(input.ask("Enter Id: "), input.ask("Enter new name: "), input.ask("Enter new description: "), input.ask("Enter new date: ")));
     }
 
     /**

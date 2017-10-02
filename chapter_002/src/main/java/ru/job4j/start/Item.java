@@ -25,6 +25,19 @@ public class Item {
         this.description = description;
         this.create = Long.parseLong(create);
     }
+    /**
+     * Item constructor.
+     * @param id - String.
+     * @param name - String.
+     * @param description - String.
+     * @param create - long.
+     */
+    Item(String id, String name, String description, String create) {
+        this.name = name;
+        this.description = description;
+        this.create = Long.parseLong(create);
+        this.id = id;
+    }
 
     /**
      * getId.
