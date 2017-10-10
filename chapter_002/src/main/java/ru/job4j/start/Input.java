@@ -1,6 +1,6 @@
 package ru.job4j.start;
 /**
- * Input.
+ * Input interface.
  *
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
  * @version $Id$
@@ -12,4 +12,6 @@ public interface Input {
      * @return String
      */
     String ask(String question);
+
+    int ask(String question, int[] range);
 }

@@ -19,11 +19,24 @@ public class StubInput implements Input {
     }
 
     /**
+     * ask.
      * @param question - String.
      * @return String.
      */
     @Override
     public String ask(String question) {
         return answers[position++];
+    }
+
+    /**
+     * ask.
+     * @param question -String.
+     * @param range - int[].
+     * @return int.
+     */
+    @Override
+    public  int ask(String question, int[] range) {
+       // throw new UnsupportedOperationException("Unsupported operation!");
+        return -1;
     }
 }

@@ -10,6 +10,7 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private UserAction[] actions = new UserAction[7];
+    private int[] range = {0, 1, 2, 3, 4, 5, 6};
 
     /**
      * MenuTracker constructor.
@@ -29,7 +30,7 @@ public class MenuTracker {
         this.actions[key].execute(this.input, this.tracker);
     }
 
-    /**
+    /**"Enter an action: "
      * fillActions.
      */
     public void fillActions() {
@@ -50,7 +51,7 @@ public class MenuTracker {
         for (UserAction action : this.actions) {
             if (action != null) { System.out.println(action.info()); }
         }
-        this.select(Integer.parseInt(input.ask("Enter an action: ")));
+        this.select(input.ask(("Enter an action: "), range));
     }
 
     /**

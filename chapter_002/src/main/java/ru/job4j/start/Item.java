@@ -79,6 +79,10 @@ public class Item {
         return this.create;
     }
 
+    /**
+     * toString.
+     * @return String.
+     */
     @Override
     public String toString() {
         return this.name + " " + this.description + " " + this.create + " " + this.id;
