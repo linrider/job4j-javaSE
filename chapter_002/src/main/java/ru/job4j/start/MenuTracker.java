@@ -11,6 +11,7 @@ public class MenuTracker {
     private Tracker tracker;
     private UserAction[] actions = new UserAction[7];
     private int[] range = {0, 1, 2, 3, 4, 5, 6};
+    private int position = 0;
 
     /**
      * MenuTracker constructor.
@@ -34,13 +35,14 @@ public class MenuTracker {
      * fillActions.
      */
     public void fillActions() {
-        this.actions[0] = new AddItem(this.input, this.tracker);
-        this.actions[1] = new ShowAllItems(this.input, this.tracker);
-        this.actions[2] = new EditItem(this.input, this.tracker);
-        this.actions[3] = new DeleteItem(this.input, this.tracker);
-        this.actions[4] = new FindItemById(this.input, this.tracker);
-        this.actions[5] = new FindItemByName(this.input, this.tracker);
-        this.actions[6] = new Exit(this.input, this.tracker);
+        this.actions[position++] = new AddItem(this.input, this.tracker);
+        this.actions[position++] = new ShowAllItems(this.input, this.tracker);
+        this.actions[position++] = new EditItem(this.input, this.tracker);
+        this.actions[position++] = new DeleteItem(this.input, this.tracker);
+        this.actions[position++] = new FindItemById(this.input, this.tracker);
+        this.actions[position++] = new FindItemByName(this.input, this.tracker);
+        this.actions[position++] = new Exit(this.input, this.tracker);
+        position = 0;
     }
 
     /**
@@ -57,7 +59,7 @@ public class MenuTracker {
     /**
      * AddItem internal class.
      */
-    private class AddItem implements UserAction{
+    private class AddItem extends BaseAction{
         private Input input;
         private Tracker tracker;
 
@@ -67,17 +69,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public AddItem(Input input, Tracker tracker) {
+            super(0, "Add a new item: ");
             this.input = input;
             this.tracker = tracker;
-        }
-
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 0;
         }
 
         /**
@@ -89,19 +83,11 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             tracker.add(new Item(input.ask("Enter your name: "), input.ask("Enter description: "), input.ask("Enter a date: "))).getId();
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add a new item: ");
-        }
     }
     /**
      * ShowAllItems internal class.
      */
-    private class ShowAllItems implements UserAction {
+    private class ShowAllItems extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -110,16 +96,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public ShowAllItems(Input input, Tracker tracker) {
+            super(1, "Show all items: ");
             this.input = input;
             this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 1;
         }
         /**
          * execute.
@@ -137,20 +116,12 @@ public class MenuTracker {
                 System.out.println("List is empty.");
             }
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items: ");
-        }
     }
 
     /**
      * EditItem internal class.
      */
-    public  class EditItem implements UserAction {
+    public  class EditItem extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -159,16 +130,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public EditItem(Input input, Tracker tracker) {
+          super(2, "Edit item: ");
           this.input = input;
           this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 2;
         }
         /**
          * execute.
@@ -180,20 +144,12 @@ public class MenuTracker {
             tracker.update(new Item(input.ask("Enter Id: "), input.ask("Enter new name: "),
                     input.ask("Enter new description: "), input.ask("Enter new date: ")));
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit item: ");
-        }
     }
 
     /**
      * DeleteItem internal class.
      */
-    public class DeleteItem implements UserAction {
+    public class DeleteItem extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -202,16 +158,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public DeleteItem(Input input, Tracker tracker) {
+            super(3, "Delete item: ");
             this.input = input;
             this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 3;
         }
         /**
          * execute.
@@ -229,20 +178,12 @@ public class MenuTracker {
                 System.out.println("Nothing was found.");
             }
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete item: ");
-        }
     }
 
     /**
      * FindItemById internal class.
      */
-    public class FindItemById implements UserAction {
+    public class FindItemById extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -251,16 +192,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public FindItemById(Input input, Tracker tracker) {
+            super(4, "Find item by id: ");
             this.input = input;
             this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 4;
         }
         /**
          * execute.
@@ -276,19 +210,11 @@ public class MenuTracker {
                 System.out.println("Nothing was found.");
             }
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by id: ");
-        }
     }
     /**
      * FindItemByName internal class.
      */
-    public class FindItemByName implements UserAction {
+    public class FindItemByName extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -297,16 +223,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public FindItemByName(Input input, Tracker tracker) {
+            super(5, "Find item by name: ");
             this.input = input;
             this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 5;
         }
         /**
          * execute.
@@ -324,20 +243,12 @@ public class MenuTracker {
                 System.out.println("Nothing was found.");
             }
         }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by name: ");
-        }
     }
 
     /**
      * Exit internal class.
      */
-    public class Exit implements UserAction {
+    public class Exit extends BaseAction {
         private Input input;
         private Tracker tracker;
         /**
@@ -346,16 +257,9 @@ public class MenuTracker {
          * @param tracker - Tracker.
          */
         public Exit(Input input, Tracker tracker) {
+            super(6, "Exit Program: ");
             this.input = input;
             this.tracker = tracker;
-        }
-        /**
-         * key.
-         * @return int.
-         */
-        @Override
-        public int key() {
-            return 6;
         }
         /**
          * execute.
@@ -364,15 +268,7 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.exit(0);
-        }
-        /**
-         * info.
-         * @return String.
-         */
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Exit Program: ");
+            if (input.ask("Are you sure? (y/n): ").equals("y")) { System.exit(0);}
         }
     }
 }
