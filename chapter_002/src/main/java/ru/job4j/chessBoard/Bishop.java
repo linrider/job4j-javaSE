@@ -7,17 +7,37 @@ public class Bishop extends Figure{
     }
 
     @Override
-    public Cell move(Cell newPos, Cell oldPos) {
-        Cell[] way = new Cell[this.getDistanace(newPos, oldPos)];
-        if (newPos.posX > oldPos.posX && newPos.posX > oldPos.posX) {
-            //вычислить длину пути, массив траектории сделать этой длины
+    public Cell[] way(Cell destination) throws ImpossibleMoveException {
+        Cell[] way = new Cell[Math.abs(this.position.posX - destination.posX)];
+
+        int x = this.position.posX;
+        int y = this.position.posY;
+
+        if (destination.posX > x && destination.posY > y) {
             for (int i = 0; i < way.length; i++) {
-                way[i].posX = oldPos.posX++;
-                way[i].posY = oldPos.posY++;
+                way[i].posX = x++;
+                way[i].posY = y++;
             }
-            //заполнить массив трактории
+        }
+        else if (destination.posX > x && destination.posY < y) {
+            for (int i = 0; i < way.length; i++) {
+                way[i].posX = x++;
+                way[i].posY = y--;
+            }
+        }
+        else if (destination.posX < x && destination.posY > y) {
+            for (int i = 0; i < way.length; i++) {
+                way[i].posX = x--;
+                way[i].posY = y++;
+            }
+        }
+        else if (destination.posX < x && destination.posY < y) {
+            for (int i = 0; i < way.length; i++) {
+                way[i].posX = x--;
+                way[i].posY = y--;
+            }
         }
 
-        return newPos;
+        return way;
     }
 }

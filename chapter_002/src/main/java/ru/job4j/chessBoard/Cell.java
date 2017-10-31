@@ -5,9 +5,8 @@ public class Cell {
     protected int posY;
     private boolean color;
 
-    public Cell(int posX, int posY, boolean color) {
+    public Cell(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
-        this.color = color;
     }
 }
