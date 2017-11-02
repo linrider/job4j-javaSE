@@ -42,6 +42,7 @@ public class MenuTracker {
         this.actions[position++] = new FindItemById(this.input, this.tracker);
         this.actions[position++] = new FindItemByName(this.input, this.tracker);
         this.actions[position++] = new Exit(this.input, this.tracker);
+        // обнуляем
         position = 0;
     }
 
