@@ -2,8 +2,8 @@ package ru.job4j.chessBoard;
 
 public class Bishop extends Figure{
 
-    public Bishop(String name, boolean color, Cell position) {
-        super(name, color, position);
+    public Bishop(boolean color, int posX, int posY) {
+        super("Bishop", color, posX, posY);
     }
 
     @Override
@@ -12,6 +12,10 @@ public class Bishop extends Figure{
 
         int x = this.position.posX;
         int y = this.position.posY;
+
+        if (destination.posX - x != destination.posY - y) {
+            throw new ImpossibleMoveException("This figure can't move like this!");
+        }
 
         if (destination.posX > x && destination.posY > y) {
             for (int i = 0; i < way.length; i++) {
