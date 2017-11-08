@@ -2,8 +2,8 @@ package ru.job4j.chessBoard;
 
 public class Bishop extends Figure{
 
-    public Bishop(boolean color, int posX, int posY) {
-        super("Bishop", color, posX, posY);
+    public Bishop(boolean color, Cell position) {
+        super("Bishop", color, position);
     }
 
     @Override

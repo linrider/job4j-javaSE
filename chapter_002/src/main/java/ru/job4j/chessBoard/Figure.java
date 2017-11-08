@@ -6,13 +6,18 @@ public abstract  class Figure {
     public Cell position;
     public int index;
 
-    public Figure(String name, boolean color, int posX, int posY) {
+    public Figure(String name, boolean color, Cell position) {
         this.name = name;
         this.color = color;
-        this.position.posX = posX;
-        this.position.posY = posY;
+        this.position = position;
     }
     public abstract Cell[] way(Cell desttination);
+
+    public Figure clone(Cell destination) {
+        Cell clonedCell = new Cell(destination.posX, destination.posY);
+        this.position = clonedCell;
+        return this;
+    }
 
 
 }

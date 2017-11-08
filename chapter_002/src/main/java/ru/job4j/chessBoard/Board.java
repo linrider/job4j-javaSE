@@ -10,21 +10,25 @@ public class Board {
 
     }
 
-    public boolean move(int posX, int posY, Figure figure) throws OccupiedWayException, FigureNotFoundException {
-        Cell destination = new Cell(posX, posY);
+    public boolean move(Cell source, Cell destination) throws OccupiedWayException, FigureNotFoundException {
         boolean invalid = false;
-        if (figure.position.posX != figures[figure.index].position.posX &&
-                figure.position.posY != figures[figure.index].position.posY) {
-            throw new FigureNotFoundException("Figure doesn't exist");
+        Figure currentFigure = null;
+        for (Figure figure : figures) {
+            if (source.equals(figure.position)) {
+                currentFigure = figure;
+            }
         }
-        else {
-            for (Cell step : figure.way(destination)) {
-                for (Figure cell : figures) {
-                    if (step.posX == cell.position.posX && step.posY == cell.position.posY) {
+        if (currentFigure == null) {
+            throw new FigureNotFoundException("Figure doesn't exist!");
+        } else {
+
+            for (Cell step : currentFigure.way(destination)) {
+                for (Figure figure : figures) {
+                    if (step.equals(figure.position)) {
                         throw new OccupiedWayException("This figure's way is occupied!");
                     } else {
                         invalid = true;
-                        figures[figure.index].position = destination;
+                        figure.clone(destination);
                     }
                 }
             }

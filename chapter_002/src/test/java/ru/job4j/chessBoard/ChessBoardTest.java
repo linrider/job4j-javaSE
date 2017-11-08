@@ -7,9 +7,11 @@ public class ChessBoardTest {
     @Test
     public void WhenBishopMoveOnFreeBoard() throws OccupiedWayException {
         Board chessBoard = new Board();
-        Bishop whiteBishop = new Bishop(true, 2, 1);
+        Cell source = new Cell(2, 1);
+        Bishop whiteBishop = new Bishop(true, source);
         chessBoard.addFigure(whiteBishop);
-        boolean result = chessBoard.move(4, 3, whiteBishop);
+        Cell dest = new Cell(4, 3);
+        boolean result = chessBoard.move (source, dest);
         assertThat(result, is(true));
 
     }
