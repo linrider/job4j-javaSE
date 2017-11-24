@@ -20,7 +20,7 @@ public class CoffeeMachine {
     int[] changes(int value, int price) throws NotEnoughMoneyException {
         int difference = value - price;
 
-        if (difference < 0) throw new NotEnoughMoneyException("Not enogh money. Please enter more money.");
+        if (difference < 0) throw new NotEnoughMoneyException("Not enough money. Please enter more money.");
         else if (difference == 0) {
             int[] changes = {0};
             return changes;
