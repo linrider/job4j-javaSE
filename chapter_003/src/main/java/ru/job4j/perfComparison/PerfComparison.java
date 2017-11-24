@@ -34,13 +34,11 @@ public class PerfComparison {
      */
     public static long delete(Collection<String> collection, int amount) {
         Date start = new Date();
-        int i = 0;
+
         Iterator<String> itr = collection.iterator();
-        while (itr.hasNext()) {
-            if (i == amount) { break; }
+        for (int i = 0; i < amount; i++) {
             itr.next();
             itr.remove();
-            i++;
         }
         Date finish = new Date();
         return finish.getTime() - start.getTime();
