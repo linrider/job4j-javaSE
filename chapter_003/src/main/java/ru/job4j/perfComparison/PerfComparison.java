@@ -48,7 +48,7 @@ public class PerfComparison {
      * main.
      * @param args - String.
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         LinkedList<String> linkedList = new LinkedList<String>();
         ArrayList<String> arrayList = new ArrayList<String>();
         TreeSet<String> treeSet = new TreeSet<String>();

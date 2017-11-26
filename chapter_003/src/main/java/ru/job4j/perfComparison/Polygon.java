@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 public class Polygon {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         TreeSet<String> treeSet = new TreeSet<>();
         treeSet.add("John");
         treeSet.add("Paul");
@@ -22,6 +22,7 @@ public class Polygon {
         System.out.println();
 
         Iterator<String> itr = treeSet.iterator();
+
         for (int i = 0; i < 3; i++) {
             itr.next();
             itr.remove();
