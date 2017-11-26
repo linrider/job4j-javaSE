@@ -15,7 +15,7 @@ public class ConvertList {
      * @param array -int[][].
      * @return List<Integer>.
      */
-    public static List<Integer> toList (int[][] array) {
+    public List<Integer> toList(int[][] array) {
         List<Integer> list = new ArrayList<>();
 
         for (int[] x : array) {
@@ -32,7 +32,7 @@ public class ConvertList {
      * @param rows - int.
      * @return int[][].
      */
-    public static int[][] toArray (List<Integer> list, int rows) {
+    public int[][] toArray(List<Integer> list, int rows) {
         int [][] array2D = new int[rows][rows];
         while (list.size() % rows != 0) { list.add(0); }
 
@@ -42,29 +42,21 @@ public class ConvertList {
                 list.remove(0);
             }
         }
-
         return array2D;
     }
 
     /**
-     * main.
-     * @param args - String[].
+     * convert.
+     * @param list - List<Integer>.
+     * @return - List<int[]>.
      */
-    public static void main(String[] args) {
-        int[][] array = { {1, 2, 3, 4}, {5, 6, 7, 8} };
-        for (Integer x : toList(array)) {
-            System.out.print(String.format("%s ", x));
-        }
-        System.out.println();
-
-        List<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= 7; i++) { list.add(i); }
-
-        for (int[] x : toArray(list, 3)) {
-            for (int y : x) {
-                System.out.print(String.format("%s ", y));
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] arrray : list) {
+            for (int value : arrray) {
+                result.add(value);
             }
-            System.out.println("");
         }
+        return result;
     }
 }
