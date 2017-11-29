@@ -44,18 +44,12 @@ public class MenuTracker {
         this.actions.add(new FindItemById(this.input, this.tracker));
         this.actions.add(new FindItemByName(this.input, this.tracker));
         this.actions.add(new Exit(this.input, this.tracker));
-        /*Этот момент вызывает вопросы. В релизации через массивы я обнулял position и массив при каждом
-        новом вызове метода массив перезаписывался заново. В данной реализации список расширяется с каждым
-        новым вызовом. Подскажите как лучше выйти из этой ситуации. У меня, конечно, есть идеи, но я боюсь,
-        что самодеятельность пойдёт в разрез с генеральной идеей.
-          */
     }
 
     /**
      * showMenu.
      */
     public void showMenu() {
-        this.fillActions();
         for (UserAction action : this.actions) {
             if (action != null) { System.out.println(action.info()); }
         }
