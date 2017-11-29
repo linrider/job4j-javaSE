@@ -1,5 +1,8 @@
 package ru.job4j.start;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * MenuTracker class.
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
@@ -9,9 +12,8 @@ package ru.job4j.start;
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[7];
+    private List<UserAction> actions = new ArrayList<>();
     private int[] range = {0, 1, 2, 3, 4, 5, 6};
-    private int position = 0;
 
     /**
      * MenuTracker constructor.
@@ -28,22 +30,25 @@ public class MenuTracker {
      * @param key - int.
      */
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker);
     }
 
     /**"Enter an action: "
      * fillActions.
      */
     public void fillActions() {
-        this.actions[position++] = new AddItem(this.input, this.tracker);
-        this.actions[position++] = new ShowAllItems(this.input, this.tracker);
-        this.actions[position++] = new EditItem(this.input, this.tracker);
-        this.actions[position++] = new DeleteItem(this.input, this.tracker);
-        this.actions[position++] = new FindItemById(this.input, this.tracker);
-        this.actions[position++] = new FindItemByName(this.input, this.tracker);
-        this.actions[position++] = new Exit(this.input, this.tracker);
-        // обнуляем
-        position = 0;
+        this.actions.add(new AddItem(this.input, this.tracker));
+        this.actions.add(new ShowAllItems(this.input, this.tracker));
+        this.actions.add(new EditItem(this.input, this.tracker));
+        this.actions.add(new DeleteItem(this.input, this.tracker));
+        this.actions.add(new FindItemById(this.input, this.tracker));
+        this.actions.add(new FindItemByName(this.input, this.tracker));
+        this.actions.add(new Exit(this.input, this.tracker));
+        /*Этот момент вызывает вопросы. В релизации через массивы я обнулял position и массив при каждом
+        новом вызове метода массив перезаписывался заново. В данной реализации список расширяется с каждым
+        новым вызовом. Подскажите как лучше выйти из этой ситуации. У меня, конечно, есть идеи, но я боюсь,
+        что самодеятельность пойдёт в разрез с генеральной идеей.
+          */
     }
 
     /**
@@ -108,8 +113,8 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            Item[] allItems = tracker.findAll();
-            if (allItems.length != 0) {
+            List<Item> allItems = tracker.findAll();
+            if (allItems.size() != 0) {
                 for (Item item : allItems) {
                     System.out.println(item.toString());
                 }
@@ -235,8 +240,8 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            Item[] items = tracker.findByName(input.ask("Enter searching name: "));
-            if (items.length != 0) {
+            List<Item> items = tracker.findByName(input.ask("Enter searching name: "));
+            if (items.size() != 0) {
                 for (Item item : items) {
                     System.out.println(item.toString());
                 }

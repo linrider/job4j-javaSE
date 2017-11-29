@@ -2,6 +2,8 @@ package ru.job4j.start;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -21,8 +23,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
-        Item[] itemsTest = tracker.findByName(itemTest.getName());
-        assertThat(itemsTest[0].getName(), is("test"));
+        List<Item> itemsTest = tracker.findByName(itemTest.getName());
+        assertThat(itemsTest.get(0).getName(), is("test"));
     }
     /**
      * test for update method.
@@ -46,7 +48,7 @@ public class TrackerTest {
         Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
         tracker.delete(itemTest);
-        assertThat(tracker.findByName(itemTest.getName()).length, is(0));
+        assertThat(tracker.findByName(itemTest.getName()).size(), is(0));
 
     }
     /**
@@ -57,7 +59,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item itemTest = new Item("test", "testDescription", "123");
         tracker.add(itemTest);
-        assertThat(tracker.findAll().length, is(1));
+        assertThat(tracker.findAll().size(), is(1));
     }
     /**
     * test for findById method.

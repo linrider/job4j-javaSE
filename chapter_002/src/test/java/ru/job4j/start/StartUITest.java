@@ -23,7 +23,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "123", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
 
     /**
@@ -43,9 +43,9 @@ public class StartUITest {
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        assertThat(tracker.findAll()[0].getName(), is("John Silver"));
-        assertThat(tracker.findAll()[1].getName(), is("Jim Hockins"));
-        assertThat(tracker.findAll()[2].getName(), is("Doctor Livsey"));
+        assertThat(tracker.findAll().get(0).getName(), is("John Silver"));
+        assertThat(tracker.findAll().get(1).getName(), is("Jim Hockins"));
+        assertThat(tracker.findAll().get(2).getName(), is("Doctor Livsey"));
     }
 
     /**
@@ -99,7 +99,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("John Silver", "engage in the service", "1742"));
         Input input = new StubInput(new String[]{"5", item.getName(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findByName(item.getName())[0].getName(), is("John Silver"));
+        assertThat(tracker.findByName(item.getName()).get(0).getName(), is("John Silver"));
     }
 
 }
