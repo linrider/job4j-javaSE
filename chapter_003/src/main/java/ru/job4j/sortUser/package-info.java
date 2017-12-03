@@ -1,7 +1,7 @@
 /**
- * Package for UserConvertTest.
+ * Package for SortUser.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
- * @since 27.11.17
+ * @since 03.12.17
  */
-package ru.job4j.user;
+package ru.job4j.sortUser;

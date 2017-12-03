@@ -1,37 +1,38 @@
 package ru.job4j.perfComparison;
 
-import java.awt.*;
-import java.util.Iterator;
-import java.util.TreeSet;
+import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Polygon {
 
-    public static void main(String[] args) {
-        TreeSet<String> treeSet = new TreeSet<>();
-        treeSet.add("John");
-        treeSet.add("Paul");
-        treeSet.add("George");
-        treeSet.add("Chopstick");
-        treeSet.add("Robert");
-        treeSet.add("Julia");
-        treeSet.add("Andrew");
+    static class User {
+        private final String name;
 
-        for (String setMember : treeSet) {
-            System.out.println(setMember);
-        }
-        System.out.println();
-
-        Iterator<String> itr = treeSet.iterator();
-
-        for (int i = 0; i < 3; i++) {
-            itr.next();
-            itr.remove();
+        User(String name) {
+            this.name = name;
         }
 
-        for (String setMember : treeSet) {
-            System.out.println(setMember);
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            User user = (User) o;
+            return Objects.equals(name, user.name);
         }
-        System.out.println();
+
+        @Override
+        public int hashCode() {
+
+            return Objects.hash(name);
+        }
     }
+    public static void main(String[] args) {
+        List<User> users =new ArrayList<User>();
 
+        users.add(new User("John"));
+        boolean result = users.contains(new User("John"));
+        System.out.print(result);
+    }
 }

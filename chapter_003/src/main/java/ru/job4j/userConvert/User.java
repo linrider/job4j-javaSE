@@ -1,4 +1,4 @@
-package ru.job4j.user;
+package ru.job4j.userConvert;
 /**
  * User for task "2. Написать программу преобразования List в Map".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)

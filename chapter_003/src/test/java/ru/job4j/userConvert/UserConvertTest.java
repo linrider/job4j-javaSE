@@ -1,4 +1,4 @@
-package ru.job4j.user;
+package ru.job4j.userConvert;
 
 import org.junit.Test;
 
@@ -29,6 +29,6 @@ public class UserConvertTest {
         HashMap<Integer, User> expected = new HashMap<>();
         expected.put(1, robertSmith);
         expected.put(2, angusYoung);
-        assertThat(expected, is(result));
+        assertThat(result, is(expected));
     }
 }
