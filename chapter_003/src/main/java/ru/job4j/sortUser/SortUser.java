@@ -35,9 +35,7 @@ public class SortUser {
         users.sort(new Comparator<User>() {
             @Override
             public int compare(User left, User right) {
-                int res = 0;
-                res = left.name.length() > right.name.length() ? 1 : -1;
-                    return res;
+                return left.name.length() > right.name.length() ? 1 :  -1;
             }
         });
         return users;
