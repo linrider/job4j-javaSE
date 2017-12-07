@@ -17,7 +17,7 @@ public class ArrayDuplicateTest {
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
         ArrayDuplicate arrayDuplicate = new ArrayDuplicate();
         String[] testArray = {"cat", "dog", "mouse", "cat", "dog", "dog", "parrot", "chicken", "pig", "cow", "pig"};
-        String [] resultArray = arrayDuplicate.remove(testArray);
+        String[] resultArray = arrayDuplicate.remove(testArray);
         String[] expectedArray = {"cat", "dog", "mouse", "parrot", "chicken", "pig", "cow"};
         assertThat(resultArray, is(expectedArray));
 

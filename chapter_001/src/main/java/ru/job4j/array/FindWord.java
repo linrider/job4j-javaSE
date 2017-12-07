@@ -14,16 +14,16 @@ public class FindWord {
      * @param sub - String.
      */
     public  boolean contains(String origin, String sub) {
-        boolean isContained = true;
-        char [] originChars = origin.toCharArray();
-        char [] subChars = sub.toCharArray();
+        boolean isContained = false;
+        char[] originChars = origin.toCharArray();
+        char[] subChars = sub.toCharArray();
 
         for (int i = 0; i < originChars.length; i++) {
             if (originChars[i] == subChars[0]) {
                 for (int j = 1; j < subChars.length; j++) {
-                    if (subChars[j] == originChars[i + j]) isContained = true;
-                    else {
-                        isContained = false;
+                    if (subChars[j] == originChars[i + j]) {
+                        isContained = true;
+                    } else {
                         break;
                     }
                 }

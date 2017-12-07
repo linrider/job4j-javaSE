@@ -21,14 +21,25 @@ public class Paint {
         int blanks;
         for (int i = 1; i <= h; i++) {
             blanks = (width - hats) / 2;
-            if (blanks == 0) for (int j = 1; j <= width; j++) pir.append("^");
-            else {
-                for (int j = 1; j <= blanks; j++) pir.append(" ");
-                for (int j = 1; j <= hats; j++) pir.append("^");
-                for (int j = 1; j <= blanks; j++) pir.append(" ");
+            if (blanks == 0) {
+                for (int j = 1; j <= width; j++) {
+                    pir.append("^");
+                }
+            } else {
+                for (int j = 1; j <= blanks; j++) {
+                    pir.append(" ");
+                }
+                for (int j = 1; j <= hats; j++) {
+                    pir.append("^");
+                }
+                for (int j = 1; j <= blanks; j++) {
+                    pir.append(" ");
+                }
             }
             hats += 2;
-            if (i != h) pir.append(System.getProperty("line.separator"));
+            if (i != h) {
+                pir.append(System.getProperty("line.separator"));
+            }
         }
         return pir.toString();
     }

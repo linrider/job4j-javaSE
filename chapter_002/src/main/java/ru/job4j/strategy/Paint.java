@@ -20,7 +20,8 @@ public class Paint {
      * defineShape.
      * @return String.
      */
-    public String defineShape(){
+    public String defineShape() {
+
         return shape.pic();
     }
 }

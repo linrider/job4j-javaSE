@@ -51,7 +51,9 @@ public class MenuTracker {
      */
     public void showMenu() {
         for (UserAction action : this.actions) {
-            if (action != null) { System.out.println(action.info()); }
+            if (action != null) {
+                System.out.println(action.info());
+            }
         }
         this.select(input.ask(("Enter an action: "), range));
     }
@@ -59,7 +61,7 @@ public class MenuTracker {
     /**
      * AddItem internal class.
      */
-    private class AddItem extends BaseAction{
+    private class AddItem extends BaseAction {
         private Input input;
         private Tracker tracker;
 
@@ -268,7 +270,9 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            if (input.ask("Are you sure? (y/n): ").equals("y")) { System.exit(0);}
+            if (input.ask("Are you sure? (y/n): ").equals("y")) {
+                System.exit(0);
+            }
         }
     }
 }

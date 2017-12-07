@@ -36,12 +36,15 @@ public class ConsoleInput implements Input {
         for (int value : range) {
             if (value == key) {
                 exist = true;
-                break; }
+                break;
+            }
 
         }
         if (exist) {
             return key;
-        } else { throw new MenuOutException("out of menu range!"); }
+        } else {
+            throw new MenuOutException("out of menu range!");
+        }
 
     }
 }

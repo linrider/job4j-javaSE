@@ -15,8 +15,11 @@ public class Board {
 
         for (int i = 1; i <= height; i++) {
             for (int j = 1; j <= width; j++) {
-                if ((i + j) % 2 == 0) board.append("x");
-                else board.append(" ");
+                if ((i + j) % 2 == 0) {
+                    board.append("x");
+                } else {
+                    board.append(" ");
+                }
             }
             board.append(System.getProperty("line.separator"));
         }

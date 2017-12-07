@@ -18,7 +18,9 @@ public class ArrayDuplicate {
         //заменяем дубли на пустые элемнеты
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
-                if (array[i].equals(array[j])) array[j] = "";
+                if (array[i].equals(array[j])) {
+                    array[j] = "";
+                }
             }
         }
         //двигаем пустые элементы в конец массива
@@ -32,7 +34,11 @@ public class ArrayDuplicate {
         }
         // находим количесво оригинальных элементов
         int count = 0;
-        for (int i = 0; i < array.length; i++) if (!array[i].equals("")) count++;
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals("")) {
+                count++;
+            }
+        }
 
         String[] newArray = Arrays.copyOf(array, count);
         return newArray;

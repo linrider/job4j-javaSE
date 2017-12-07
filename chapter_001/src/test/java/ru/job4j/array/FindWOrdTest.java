@@ -12,8 +12,11 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class FindWOrdTest {
+    /**
+     * whenFoundSubWordInOriginWordThenGetTrue.
+     */
     @Test
-    public void whenFooundSubWordInOriginWordThenGetTrue() {
+    public void whenFoundSubWordInOriginWordThenGetTrue() {
         FindWord findWord = new FindWord();
         String origin = "Привет";
         String sub = "иве";
@@ -21,8 +24,12 @@ public class FindWOrdTest {
         assertThat(result, is(true));
 
     }
+
+    /**
+     * whenNotFoundSubWordInOriginWordThenGetFalse.
+     */
     @Test
-    public void whenNotFooundSubWordInOriginWordThenGetFalse() {
+    public void whenNotFoundSubWordInOriginWordThenGetFalse() {
         FindWord findWord = new FindWord();
         String origin = "Трансплантация";
         String sub = "ква";

@@ -50,7 +50,9 @@ public class Tracker {
     protected void delete(Item item) {
         String id = item.getId();
         for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getId().equals(id)) { items.remove(i); }
+            if (items.get(i).getId().equals(id)) {
+                items.remove(i);
+            }
         }
     }
 
