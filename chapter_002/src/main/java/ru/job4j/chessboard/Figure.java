@@ -1,23 +1,15 @@
 package ru.job4j.chessboard;
 
 public abstract  class Figure {
-    private String name;
-    private boolean color;
-    public Cell position;
-    public int index;
+    public final Cell position;
 
-    public Figure(String name, boolean color, Cell position) {
-        this.name = name;
-        this.color = color;
+    public Figure(Cell position) {
         this.position = position;
     }
-    public abstract Cell[] way(Cell desttination);
 
-    public Figure clone(Cell destination) {
-        Cell clonedCell = new Cell(destination.posX, destination.posY);
-        this.position = clonedCell;
-        return this;
-    }
+    public abstract Cell[] way(Cell destination) throws ImpossibleMoveException;
+
+    public abstract Figure clone(Cell destination);
 
 
 }

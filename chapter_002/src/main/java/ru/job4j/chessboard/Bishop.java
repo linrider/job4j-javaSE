@@ -2,9 +2,9 @@ package ru.job4j.chessboard;
 
 public class Bishop extends Figure {
 
-    public Bishop(boolean color, Cell position) {
-        super("Bishop", color, position);
-    }
+    public Bishop(Cell position) {
+        super(position);
+        }
 
     @Override
     public Cell[] way(Cell destination) throws ImpossibleMoveException {
@@ -18,27 +18,32 @@ public class Bishop extends Figure {
         }
 
         if (destination.posX > x && destination.posY > y) {
-            for (int i = 0; i < way.length; i++) {
-                way[i].posX = x++;
-                way[i].posY = y++;
+            for (Cell aWay : way) {
+                aWay.posX = x++;
+                aWay.posY = y++;
             }
         } else if (destination.posX > x && destination.posY < y) {
-            for (int i = 0; i < way.length; i++) {
-                way[i].posX = x++;
-                way[i].posY = y--;
+            for (Cell aWay : way) {
+                aWay.posX = x++;
+                aWay.posY = y--;
             }
         } else if (destination.posX < x && destination.posY > y) {
-            for (int i = 0; i < way.length; i++) {
-                way[i].posX = x--;
-                way[i].posY = y++;
+            for (Cell aWay : way) {
+                aWay.posX = x--;
+                aWay.posY = y++;
             }
         } else if (destination.posX < x && destination.posY < y) {
-            for (int i = 0; i < way.length; i++) {
-                way[i].posX = x--;
-                way[i].posY = y--;
+            for (Cell aWay : way) {
+                aWay.posX = x--;
+                aWay.posY = y--;
             }
         }
 
         return way;
+    }
+
+    @Override
+    public Figure clone(Cell destination) {
+        return new Bishop(destination);
     }
 }
