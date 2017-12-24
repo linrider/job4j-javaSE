@@ -12,10 +12,16 @@ public class ChessBoardTest {
     public void whenBishopMoveOnFreeBoard() throws OccupiedWayException {
         Board chessBoard = new Board();
         Cell source = new Cell(2, 1);
-        Bishop whiteBishop = new Bishop(true, source);
-        chessBoard.addFigure(whiteBishop);
         Cell dest = new Cell(4, 3);
-        boolean result = chessBoard.move(source, dest);
+        Bishop whiteBishop = new Bishop(source);
+        chessBoard.addFigure(whiteBishop);
+
+        boolean result = false;
+        try {
+            result = chessBoard.move(source, dest);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         assertThat(result, is(true));
 
     }

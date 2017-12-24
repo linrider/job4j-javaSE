@@ -18,24 +18,24 @@ public class Bishop extends Figure {
         }
 
         if (destination.posX > x && destination.posY > y) {
-            for (Cell aWay : way) {
-                aWay.posX = x++;
-                aWay.posY = y++;
+            for (int i = 0; i < way.length; i++) {
+                way[i].posX = ++x;
+                way[i].posY = ++y;
             }
         } else if (destination.posX > x && destination.posY < y) {
             for (Cell aWay : way) {
-                aWay.posX = x++;
-                aWay.posY = y--;
+                aWay.posX = ++x;
+                aWay.posY = --y;
             }
         } else if (destination.posX < x && destination.posY > y) {
             for (Cell aWay : way) {
-                aWay.posX = x--;
-                aWay.posY = y++;
+                aWay.posX = --x;
+                aWay.posY = ++y;
             }
         } else if (destination.posX < x && destination.posY < y) {
             for (Cell aWay : way) {
-                aWay.posX = x--;
-                aWay.posY = y--;
+                aWay.posX = --x;
+                aWay.posY = --y;
             }
         }
 
@@ -43,7 +43,7 @@ public class Bishop extends Figure {
     }
 
     @Override
-    public Figure clone(Cell destination) {
+    public Figure copy(Cell destination) {
         return new Bishop(destination);
     }
 }

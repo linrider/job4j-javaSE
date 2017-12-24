@@ -15,14 +15,7 @@ public class SortUser {
      * @return - TreeSet<User>.
      */
     public TreeSet<User> sort(List<User> users) {
-        TreeSet<User> userSet = new TreeSet<>(new Comparator<User>() {
-            @Override
-            public int compare(User left, User right) {
-                final int res = Integer.compare(left.age, right.age);
-                return res != 0 ? res : left.name.compareTo(right.name);
-            }
-        });
-        userSet.addAll(users);
+        TreeSet<User> userSet = new TreeSet<>(users);
         return userSet;
     }
 

@@ -9,7 +9,7 @@ public abstract  class Figure {
 
     public abstract Cell[] way(Cell destination) throws ImpossibleMoveException;
 
-    public abstract Figure clone(Cell destination);
+    public abstract Figure copy(Cell destination);
 
 
 }
