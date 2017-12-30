@@ -5,15 +5,22 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SortDepartments {
-    private static final int[] pos = {1, 5, 10};
 
     public List<String> sortAscending(List<String> departments) {
         departments.sort(new Comparator<String>() {
             @Override
             public int compare(String left, String right) {
-                int res = ((left.length() == 2) || (right.length() == 2)) ? Integer.compare((int) left.charAt(pos[0]), (int) right.charAt(pos[0])) : 1;
-                //res = ((left.length() == 6) || (right.length() == 6)) ? Integer.compare((int) left.charAt(pos[1]), (int) right.charAt(pos[1])) : 1;
-                return res;
+                return left.compareTo(right);
+            }
+        });
+        return departments;
+    }
+
+    public List<String> sortDecreasing(List<String> departments) {
+        departments.sort(new Comparator<String>() {
+            @Override
+            public int compare(String left, String right) {
+                return right.compareTo(left);
             }
         });
         return departments;
@@ -41,7 +48,11 @@ public class SortDepartments {
         for (String x : list) {
             System.out.println(x);
         }
-
+        System.out.println("-------------");
+        sortDepartments.sortDecreasing(list);
+        for (String x : list) {
+            System.out.println(x);
+        }
 
     }
 }
