@@ -28,7 +28,7 @@ public class ListCompareTest {
      * whenLeftGreatRightThenMunis.
      */
     @Test
-    public void whenLeftGreatRightThenMunis() {
+    public void whenLeftGreatRightThenMinus() {
         ListCompare compare = new ListCompare();
         int rst = compare.compare(
                 Arrays.asList(1),

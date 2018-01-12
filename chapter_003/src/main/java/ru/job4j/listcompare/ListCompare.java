@@ -30,4 +30,5 @@ public class ListCompare implements Comparator<List<Integer>> {
         final int res = Integer.compare(left.size(), right.size());
         return res == 0 ? Integer.compare(leftSum, rightSum) : res;
     }
+
 }
