@@ -21,7 +21,8 @@ public class SplitStrings {
             @Override
             public int compare(List<String> left, List<String> right) {
                 final int res = Integer.compare(left.size(), right.size());
-                return res == 0 ? compare("fdvdfv", "cfdsvf") : res;
+                //return res == 0 ? compare("fdvdfv", "cfdsvf") : res;
+                return res;
             }
 
         });
