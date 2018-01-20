@@ -22,7 +22,7 @@ public class Client {
         return passport;
     }
 
-    public Client(String name, String passport) {
+    Client(String name, String passport) {
         this.name = name;
         this.passport = passport;
     }

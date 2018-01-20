@@ -59,7 +59,17 @@ public class BankSimulator {
     }
 
     public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
+        boolean successed = false;
+        Client srcClient = null;
+        Client destClient = null;
+        for (Map.Entry<Client, List<Account>> entry : clientListMap.entrySet()) {
+            if (srcPassport.equals(entry.getKey().getPassport())) {
+                srcClient = entry.getKey();
+            } else if (destPassport.equals(entry.getKey().getPassport())) {
+                destClient = entry.getKey();
+        }
 
-        return false;
+        if (clientListMap.get(srcClient).get()
+        return successed;
     }
 }
