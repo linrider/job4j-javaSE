@@ -3,7 +3,7 @@ package ru.job4j.sortdepartments;
 
 import java.util.*;
 
-public class SplitStrings {
+public class SortDepartments {
 
     public List<List<String>> splitStrings(List<String> departments) {
         ArrayList<List<String>> branches = new ArrayList<>();
@@ -21,8 +21,7 @@ public class SplitStrings {
             @Override
             public int compare(List<String> left, List<String> right) {
                 final int res = Integer.compare(left.size(), right.size());
-                //return res == 0 ? compare("fdvdfv", "cfdsvf") : res;
-                return res;
+                return res == 0 ? compare(left.toString(), right.toString()) : res;
             }
 
         });
@@ -31,7 +30,7 @@ public class SplitStrings {
 
 
     public static void main(String[] args) {
-        SplitStrings splitStrings = new SplitStrings();
+        SortDepartments splitStrings = new SortDepartments();
         List<String> departments = new ArrayList<>();
         departments.add("K1\\SK1");
         departments.add("K2");
