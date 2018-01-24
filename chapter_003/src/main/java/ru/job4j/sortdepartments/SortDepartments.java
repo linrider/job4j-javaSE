@@ -21,7 +21,8 @@ public class SortDepartments {
             @Override
             public int compare(List<String> left, List<String> right) {
                 final int res = Integer.compare(left.size(), right.size());
-                return res == 0 ? compare(left.toString(), right.toString()) : res;
+                //return res == 0 ? compare(left.toString(), right.toString()) : res;
+                return 0;
             }
 
         });

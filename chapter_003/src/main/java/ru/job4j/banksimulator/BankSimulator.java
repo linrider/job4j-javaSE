@@ -1,9 +1,7 @@
 package ru.job4j.banksimulator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 /**
  * BankSimulator.
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
@@ -11,7 +9,7 @@ import java.util.Map;
  * @since 20.01.18
  */
 public class BankSimulator {
-    public Map<Client, List<Account>> clientListMap = new HashMap<>();
+    private Map<Client, List<Account>> clientListMap = new HashMap<>();
 
 
     /**
@@ -24,6 +22,13 @@ public class BankSimulator {
         }
     }
 
+    /**
+     * getClientSet.
+     * @return - Set<Client>.
+     */
+    public Set<Client> getClientSet() {
+        return clientListMap.keySet();
+    }
     /**
      * deleteClient.
      * @param client - Client.
@@ -66,11 +71,11 @@ public class BankSimulator {
     }
 
     /**
-     * getUserAccounts.
+     * getClientAccounts.
      * @param passport - String.
      * @return List<Account>.
      */
-    public List<Account> getUserAccounts(String passport) {
+    public List<Account> getClientAccounts(String passport) {
         Client client = null;
         for (Map.Entry<Client, List<Account>> entry : clientListMap.entrySet()) {
             client = entry.getKey();
