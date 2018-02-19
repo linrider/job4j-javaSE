@@ -20,9 +20,15 @@ public class SortDepartments {
         departments.sort(new Comparator<List<String>>() {
             @Override
             public int compare(List<String> left, List<String> right) {
-                final int res = Integer.compare(left.size(), right.size());
-                //return res == 0 ? compare(left.toString(), right.toString()) : res;
-                return 0;
+                int res = 0;
+                for (int i = 0; i < (left.size() < right.size() ? left.size() : right.size()); i++) {
+                    res = left.get(i).compareTo(right.get(i));
+                    res = res == 0 ? Integer.compare(left.size(), right.size()) : res;
+                    if (res != 0) {
+                        break;
+                    }
+                }
+                return res;
             }
 
         });
@@ -33,10 +39,14 @@ public class SortDepartments {
     public static void main(String[] args) {
         SortDepartments splitStrings = new SortDepartments();
         List<String> departments = new ArrayList<>();
+        departments.add("K1\\SK1\\SSK2");
+        departments.add("K2\\SK1\\SSK2");
         departments.add("K1\\SK1");
+        departments.add("K2\\SK2\\SSK1");
         departments.add("K2");
         departments.add("K1");
         departments.add("K1\\SK1\\SSK1");
+        departments.add("K2\\SK2");
 
         List<List<String>> list = new ArrayList<>(splitStrings.splitStrings(departments));
         List<List<String>> sorted = new ArrayList<>(splitStrings.sortAscending(list));

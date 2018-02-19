@@ -49,6 +49,19 @@ public class ListCompareTest {
         );
         assertThat(rst, is(1));
     }
+
+    /**
+     * whenLeftLessAndShorterThanRightThenPlus.
+     */
+    @Test
+    public void whenLeftLessAndShorterThanRightThenPlus() {
+        ListCompare compare = new ListCompare();
+        int rst = compare.compare(
+                Arrays.asList(2),
+                Arrays.asList(1, 2, 3)
+        );
+        assertThat(rst, is(1));
+    }
 }
 
 

@@ -19,16 +19,15 @@ public class ListCompare implements Comparator<List<Integer>> {
      */
     @Override
     public int compare(List<Integer> left, List<Integer> right) {
-        int leftSum = 0;
-        int rightSum = 0;
-        for (Integer x : left) {
-            leftSum += x;
+        int res = 0;
+        for (int i = 0; i < (left.size() < right.size() ? left.size() : right.size()); i++) {
+            res = Integer.compare(left.get(i), right.get(i));
+            if (res != 0) {
+                break;
+            }
         }
-        for (Integer x : right) {
-            rightSum += x;
-        }
-        final int res = Integer.compare(left.size(), right.size());
-        return res == 0 ? Integer.compare(leftSum, rightSum) : res;
+
+        return res == 0 ? Integer.compare(left.size(), right.size()) : res;
     }
 
 }
