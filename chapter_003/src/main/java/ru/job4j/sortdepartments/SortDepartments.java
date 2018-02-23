@@ -23,14 +23,30 @@ public class SortDepartments {
                 int res = 0;
                 for (int i = 0; i < (left.size() < right.size() ? left.size() : right.size()); i++) {
                     res = left.get(i).compareTo(right.get(i));
-                    res = res == 0 ? Integer.compare(left.size(), right.size()) : res;
                     if (res != 0) {
                         break;
                     }
                 }
-                return res;
+                return res == 0 ? Integer.compare(left.size(), right.size()) : res;
             }
 
+        });
+        return departments;
+    }
+
+    public List<List<String>> sortDecreasing(List<List<String>> departments) {
+        departments.sort(new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> left, List<String> right) {
+                int res = 0;
+                for (int i = 0; i < (left.size() < right.size() ? left.size() : right.size()); i++) {
+                    res = right.get(i).compareTo(left.get(i));
+                    if (res != 0) {
+                        break;
+                    }
+                }
+                return res == 0 ? Integer.compare(left.size(), right.size()) : res;
+            }
         });
         return departments;
     }
@@ -49,7 +65,9 @@ public class SortDepartments {
         departments.add("K2\\SK2");
 
         List<List<String>> list = new ArrayList<>(splitStrings.splitStrings(departments));
-        List<List<String>> sorted = new ArrayList<>(splitStrings.sortAscending(list));
-        System.out.println(sorted);
+        List<List<String>> sortedUp = new ArrayList<>(splitStrings.sortAscending(list));
+        List<List<String>> sortedDown = new ArrayList<>(splitStrings.sortDecreasing(list));
+        System.out.println(sortedUp);
+        System.out.println(sortedDown);
     }
 }
