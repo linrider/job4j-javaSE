@@ -13,19 +13,15 @@ import static javax.management.Query.value;
  */
 public class MatrixIterator implements Iterator<Integer> {
     private int[][] values;
-    private int iRow = 0;
-    private int iColumn = 0;
-    private int absLength = 0;
-    private int count = 0;
+    private int row = 0;
+    private int cell = 0;
+
 
     /** constructor MatrixIterator.
      * @param values - final int[][].
      */
     public MatrixIterator(final int[][] values) {
         this.values = values;
-        for (int i = 0; i < values.length; i++) {
-            absLength += values[i].length;
-        }
     }
 
     /**
@@ -34,7 +30,7 @@ public class MatrixIterator implements Iterator<Integer> {
      */
     @Override
     public boolean hasNext() {
-        return count < absLength;
+        return row < values.length && cell < values[row].length;
     }
 
     /**
@@ -43,17 +39,16 @@ public class MatrixIterator implements Iterator<Integer> {
      */
     @Override
     public Integer next() {
-        if (absLength == 0) {
+        if (values.length == 0) {
             throw new NoSuchElementException();
         }
-
-        count++;
-        Integer res = values[iRow][iColumn];
-        if (iColumn >= values[iRow].length - 1) {
-            ++iRow;
-            iColumn = 0;
+        //перевод каретки
+        Integer res = values[row][cell];
+        if (cell >= values[row].length - 1) {
+            ++row;
+            cell = 0;
         } else {
-            ++iColumn;
+            ++cell;
         }
         return res;
     }
