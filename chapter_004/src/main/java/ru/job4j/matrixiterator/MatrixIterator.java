@@ -45,10 +45,10 @@ public class MatrixIterator implements Iterator<Integer> {
         //перевод каретки
         Integer res = values[row][cell];
         if (cell >= values[row].length - 1) {
-            ++row;
+            row++;
             cell = 0;
         } else {
-            ++cell;
+            cell++;
         }
         return res;
     }

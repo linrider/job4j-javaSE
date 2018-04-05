@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 /**
- * MatrixIteratorTest.
+ * MatrixIteratorTest (final).
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 20.03.18
