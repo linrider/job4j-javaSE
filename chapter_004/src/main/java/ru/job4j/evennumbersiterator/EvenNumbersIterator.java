@@ -27,7 +27,6 @@ public class EvenNumbersIterator implements Iterator<Integer> {
                 lastNumbIndex = i;
                 break;
             }
-
         }
 
         for (int i = 0; i < numbers.length; i++) {
