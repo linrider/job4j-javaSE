@@ -21,13 +21,12 @@ public class EvenNumbersIterator implements Iterator<Integer> {
      */
     public EvenNumbersIterator(int[] numbers) {
         this.numbers = numbers;
+    }
 
-        for (int i = numbers.length - 1; i >= 0; i--) {
-            if (numbers[i] != 0 && numbers[i] % 2 == 0) {
-                lastNumbIndex = i;
-                break;
-            }
-        }
+    /**
+     * init.
+     */
+    private void init() {
 
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] != 0 && numbers[i] % 2 == 0) {
@@ -35,13 +34,22 @@ public class EvenNumbersIterator implements Iterator<Integer> {
                 break;
             }
         }
-    }
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            if (numbers[i] != 0 && numbers[i] % 2 == 0) {
+                lastNumbIndex = i;
+                break;
+            }
+        }
 
+    }
     /**
      * @return boolean.
      */
     @Override
     public boolean hasNext() {
+        if (position == 0) {
+            init();
+        }
         if (lastNumbIndex != null) {
             hasNextFlag = position <= lastNumbIndex;
         }
