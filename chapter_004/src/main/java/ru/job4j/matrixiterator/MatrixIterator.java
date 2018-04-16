@@ -39,11 +39,12 @@ public class MatrixIterator implements Iterator<Integer> {
      */
     @Override
     public Integer next() {
-        if (values.length == 0) {
+        if (values.length == 0 || row >= values.length) {
             throw new NoSuchElementException();
         }
-        //перевод каретки
+
         Integer res = values[row][cell];
+
         if (cell >= values[row].length - 1) {
             row++;
             cell = 0;

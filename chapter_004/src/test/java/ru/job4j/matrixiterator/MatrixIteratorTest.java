@@ -60,6 +60,17 @@ public class MatrixIteratorTest {
         assertThat(it.next(), is(6));
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void testForNoSuchElement() {
+        assertThat(it.next(), is(1));
+        assertThat(it.next(), is(2));
+        assertThat(it.next(), is(3));
+        assertThat(it.next(), is(4));
+        assertThat(it.next(), is(5));
+        assertThat(it.next(), is(6));
+        it.next();
+    }
+
     /**
      * sequentialHasNextInvocationDoesntAffectRetrievalOrder.
      */
