@@ -20,7 +20,12 @@ public class PrimeIterator implements Iterator<Integer> {
      */
     public PrimeIterator(int[] numbers) {
         this.numbers = numbers;
+    }
 
+    /**
+     * init.
+     */
+    private void init() {
         //looking for first prime number's index
         for (int i = 0; i < numbers.length; i++) {
             if (isPrime(numbers[i])) {
@@ -34,7 +39,6 @@ public class PrimeIterator implements Iterator<Integer> {
                 lastPrimePos = i;
             }
         }
-
     }
 
     /**
@@ -65,6 +69,10 @@ public class PrimeIterator implements Iterator<Integer> {
      */
     @Override
     public boolean hasNext() {
+        if (position == 0) {
+            init();
+        }
+
         if (lastPrimePos != null) {
             hasNextFlag = position <= lastPrimePos;
         }
