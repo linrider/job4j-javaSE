@@ -1,4 +1,4 @@
-package ru.job4j.iteratorofIterators;
+package ru.job4j.iteratorofiterators;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,10 +10,18 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-
+/**
+ * IteratorOfIteratorsTest.
+ * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
+ * @version $Id$
+ * @since 07.05.18
+ */
 public class IteratorOfIteratorsTest {
     Iterator<Integer> it;
 
+    /**
+     * setUp.
+     */
     @Before
     public void setUp () {
         Iterator<Integer> it1 = Arrays.asList(1, 2, 3).iterator();
@@ -24,6 +32,9 @@ public class IteratorOfIteratorsTest {
         it = IteratorOfIterators.convert(its);
     }
 
+    /**
+     * hasNextNextSequentialInvocation.
+     */
     @Test
     public void hasNextNextSequentialInvocation () {
         assertThat(it.hasNext(), is(true));
@@ -47,6 +58,9 @@ public class IteratorOfIteratorsTest {
         assertThat(it.hasNext(), is(false));
     }
 
+    /**
+     * testsThatNextMethodDoesntDependsOnPriorHasNextInvocation.
+     */
     @Test
     public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation () {
         assertThat(it.next(), is(1));
@@ -60,6 +74,9 @@ public class IteratorOfIteratorsTest {
         assertThat(it.next(), is(9));
     }
 
+    /**
+     * sequentialHasNextInvocationDoesntAffectRetrievalOrder.
+     */
     @Test
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
         assertThat(it.hasNext(), is(true));
@@ -75,6 +92,9 @@ public class IteratorOfIteratorsTest {
         assertThat(it.next(), is(9));
     }
 
+    /**
+     * hasNextShouldReturnFalseInCaseOfEmptyIterators.
+     */
     @Test
     public void hasNextShouldReturnFalseInCaseOfEmptyIterators(){
         Iterator<Integer> it1 = (new ArrayList<Integer>()).iterator();
@@ -86,6 +106,9 @@ public class IteratorOfIteratorsTest {
         assertThat(it.hasNext(), is(false));
     }
 
+    /**
+     * nvocationOfNextMethodShouldThrowNoSuchElementException.
+     */
     @Test(expected = NoSuchElementException.class)
     public void invocationOfNextMethodShouldThrowNoSuchElementException(){
         Iterator<Integer> it1 = Arrays.asList(1,2,3).iterator();
