@@ -5,10 +5,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.is;
-
+/**
+ * UserStoreTest for task "5.2.2. Реализовать Store<T extends Base>".
+ * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
+ * @version $Id$.
+ * @since 11.06.18.
+ */
 public class UserStoreTest {
     private UserStore tUserStore = new UserStore(2);
 
+    /**
+     * setUp.
+     */
     @Before
     public void setUp() {
         User user1 = new User("User One", "id_01");
@@ -18,19 +26,36 @@ public class UserStoreTest {
 
     }
 
+    /**
+     * whenOneObjectIsRBeingReplacedForAnotherOne.
+     */
     @Test
-    public void replace() {
+    public void whenOneObjectIsRBeingReplacedForAnotherOne() {
         User user3 = new User("User Three", "id_03");
         assertThat(tUserStore.replace("id_02", user3), is(true));
     }
 
+    /**
+     * whenOneObjectIsBeingDeleted.
+     */
     @Test
-    public void delete() {
+    public void whenOneObjectIsBeingDeleted() {
         assertThat(tUserStore.delete("id_02"), is(true));
     }
 
+    /**
+     * whenAnObjectIsBeingFoundByItsId.
+     */
     @Test
-    public void findById() {
-        assertThat(tUserStore.findById("id_02"), is());
+    public void whenAnObjectIsBeingFoundByItsId() {
+        User res = (User) tUserStore.findById("id_02");
+        assertThat(res.getUserName(),is("User Two"));
+    }
+
+    @Test
+    public void whenTheWrongTypeObjectIsTryingToReplaceObjectInStoreAndCallException() {
+        //этот тест не работает. UserStore проглатывает объекты Role без возражений
+        Role role = new Role("Role", "id_role");
+        tUserStore.replace("id_01", role);
     }
 }
