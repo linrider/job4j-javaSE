@@ -9,8 +9,8 @@ import java.util.Iterator;
  */
 public class SimpleArray<T> implements Iterable<T> {
 
-    Object[] objects;
-    int index = 0;
+    private Object[] objects;
+    private int index = 0;
 
     /**
      * @param size - int.
