@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -65,6 +66,16 @@ public class LinkedContainerTest {
         Iterator<Integer> it = linkedContainer.iterator();
         it.next();
         linkedContainer.add(6);
+        it.next();
+    }
+
+    /**
+     * whenTryToUseIteratorWithEmptyListThenGetNoSuchElementException.
+     */
+    @Test (expected = NoSuchElementException.class)
+    public void whenTryToUseIteratorWithEmptyListThenGetNoSuchElementException() {
+        LinkedContainer<Integer> emptyList = new LinkedContainer<>();
+        Iterator<Integer> it = emptyList.iterator();
         it.next();
     }
 }

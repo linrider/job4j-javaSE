@@ -2,6 +2,8 @@ package ru.job4j.linkedContainer;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * LinkedContainer for task "5.3.2. Создать контейнер на базе связанного списка  [#159]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
@@ -104,6 +106,9 @@ public class LinkedContainer<E> implements Iterable<E> {
              */
             @Override
             public E next() {
+                if (current == null) {
+                    throw new NoSuchElementException();
+                }
                 if (modCount != modIndicator) {
                     throw new ConcurrentModificationException();
                 }
