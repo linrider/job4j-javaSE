@@ -15,8 +15,7 @@ public class UserStore<User> extends AbstractStore{
      * @param number - int.
      */
     public UserStore(int number) {
-        this.store = new SimpleArray<User>(number);
-        this.number = number;
+        super(number);
     }
 
 }

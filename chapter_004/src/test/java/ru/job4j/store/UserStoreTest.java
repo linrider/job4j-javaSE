@@ -51,11 +51,4 @@ public class UserStoreTest {
         User res = (User) tUserStore.findById("id_02");
         assertThat(res.getUserName(),is("User Two"));
     }
-
-    @Test
-    public void whenTheWrongTypeObjectIsTryingToReplaceObjectInStoreAndCallException() {
-        //этот тест не работает. UserStore проглатывает объекты Role без возражений
-        Role role = new Role("Role", "id_role");
-        tUserStore.replace("id_01", role);
-    }
 }

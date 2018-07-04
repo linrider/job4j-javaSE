@@ -13,6 +13,10 @@ public abstract class AbstractStore<T extends Base> implements Store<T> {
     protected int number;
     protected SimpleArray<T> store;
 
+    public AbstractStore(int number) {
+        this.store = new SimpleArray<T>(number);
+        this.number = number;
+    }
     /**
      * add.
      * @param model - Base.

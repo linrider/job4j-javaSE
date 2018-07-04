@@ -15,8 +15,7 @@ public class RoleStore<Role> extends AbstractStore{
      * @param number
      */
     public RoleStore(int number) {
-        this.store = new SimpleArray<Role>(number);
-        this.number = number;
+       super(number);
     }
 
 }
