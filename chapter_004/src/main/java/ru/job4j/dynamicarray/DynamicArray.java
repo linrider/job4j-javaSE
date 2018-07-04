@@ -14,6 +14,7 @@ public class DynamicArray<E> implements Iterable<E> {
     private Object[] container;
     private int position;
     private int modCount = 0;
+    private int size = 0;
 
     /**
      * Constructor for DynamicArray without params.
@@ -45,6 +46,7 @@ public class DynamicArray<E> implements Iterable<E> {
         }
         this.container[position++] = value;
         modCount++;
+        size++;
     }
 
     /**
@@ -62,14 +64,6 @@ public class DynamicArray<E> implements Iterable<E> {
      * @return int.
      */
     public int size() {
-        int size = 0;
-        for (int i = 0; i < container.length; i++) {
-            if (container[i] != null) {
-                size++;
-            } else {
-                break;
-            }
-        }
         return size;
     }
 
@@ -87,7 +81,7 @@ public class DynamicArray<E> implements Iterable<E> {
              */
             @Override
             public boolean hasNext() {
-                return container[index] != null && index < container.length;
+                return index < size;
             }
 
             /**
