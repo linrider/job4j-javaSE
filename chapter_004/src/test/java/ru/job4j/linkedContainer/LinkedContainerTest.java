@@ -40,6 +40,14 @@ public class LinkedContainerTest {
     }
 
     /**
+     * whenRemoveLastElementThemReturnNewLastElement.
+     */
+    @Test
+    public void whenRemoveLastElementThemReturnNewLastElement() {
+        assertThat(linkedContainer.removeLast(), is(4));
+    }
+
+    /**
      * whenCreateIteratorThenReturnHasNextResultsAndValues.
      */
     @Test

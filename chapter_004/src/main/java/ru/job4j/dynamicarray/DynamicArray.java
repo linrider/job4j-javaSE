@@ -3,6 +3,8 @@ package ru.job4j.dynamicarray;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * DynamicArray for task "5.3.1. Создать динамический список на базе массива [#158]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
@@ -90,6 +92,9 @@ public class DynamicArray<E> implements Iterable<E> {
              */
             @Override
             public E next() {
+                if (size == 0) {
+                    throw new NoSuchElementException();
+                }
                 if (modCount != modIndicator) {
                     throw new ConcurrentModificationException();
                 }

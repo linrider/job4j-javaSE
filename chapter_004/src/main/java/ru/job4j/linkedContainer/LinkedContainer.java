@@ -81,6 +81,57 @@ public class LinkedContainer<E> implements Iterable<E> {
     }
 
     /**
+     * getLast.
+     * @return E.
+     */
+    public E getLast() {
+        return this.lastNode.date;
+    }
+
+    /**
+     * removeLast.
+     * @return E.
+     */
+    public E removeLast() {
+        E result = null;
+        if (this.size == 1) {
+            firstNode = null;
+        } else if (this.size == 2) {
+            firstNode.next = null;
+            result = firstNode.date;
+        } else {
+            Node<E> current = lastNode.prev;
+            current.next = null;
+            lastNode = current;
+            result = lastNode.date;
+        }
+        this.size--;
+        return result;
+    }
+
+    /**
+     * removeFirst.
+     * @return E.
+     */
+    public E removeFirst() {
+        E result = null;
+        if (this.size == 1) {
+            firstNode = null;
+        } else if (this.size == 2) {
+            lastNode.prev = null;
+            firstNode = lastNode;
+            result = firstNode.date;
+        } else {
+            Node<E> current = firstNode.next;
+            current.prev = null;
+            firstNode = current;
+            result = firstNode.date;
+        }
+        this.size--;
+        return result;
+    }
+
+    /**
      * Iterator.
      * @return Iterator<E>.
      */

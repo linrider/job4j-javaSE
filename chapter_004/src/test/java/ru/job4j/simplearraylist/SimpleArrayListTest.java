@@ -3,6 +3,7 @@ package ru.job4j.simplearraylist;
 import org.junit.Test;
 import org.junit.Before;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -31,6 +32,9 @@ public class SimpleArrayListTest {
     @Test
     public void whenDeleteFirstElementAndReturnNewFirsElement() {
         assertThat(list.delete(), is(2));
+        assertThat(list.delete(), is(1));
+        assertThat(list.delete(), is(nullValue()));
+
 
     }
 

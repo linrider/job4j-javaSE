@@ -1,4 +1,7 @@
 package ru.job4j.simplearraylist;
+
+import java.util.NoSuchElementException;
+
 /**
  * SimpleArrayList for task "5.3.0 Создать метод delete для односвязного списка [#51424]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
@@ -34,9 +37,19 @@ public class SimpleArrayList<E> {
     * Реализовать метод удаления первого элемента в списке.
     */
     public E delete() {
-        this.first = this.first.next;
-        size--;
-        return this.first.date;
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        E result = null;
+        if (size != 1) {
+            this.first = this.first.next;
+            this.size--;
+            result = this.first.date;
+        } else  {
+            size--;
+            this.first = null;
+        }
+        return result;
     }
 
     /**
