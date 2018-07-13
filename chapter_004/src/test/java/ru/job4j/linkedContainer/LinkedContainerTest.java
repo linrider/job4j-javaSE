@@ -16,18 +16,18 @@ import static org.junit.Assert.*;
  * @since 28.06.18.
  */
 public class LinkedContainerTest {
-    LinkedContainer<Integer> linkedContainer = new LinkedContainer<>();
+    private LinkedContainer<Integer> linkedContainer = new LinkedContainer<>();
 
     /**
      * primaryListCreation.
      */
     @Before
     public void primaryListCreation() {
-        linkedContainer.add(1);
-        linkedContainer.add(2);
-        linkedContainer.add(3);
-        linkedContainer.add(4);
-        linkedContainer.add(5);
+        linkedContainer.addToTail(1);
+        linkedContainer.addToTail(2);
+        linkedContainer.addToTail(3);
+        linkedContainer.addToTail(4);
+        linkedContainer.addToTail(5);
     }
 
     /**
@@ -37,6 +37,20 @@ public class LinkedContainerTest {
     public void whenGetTwoElementsForControlHowWasTheyAdded() {
         assertThat(linkedContainer.get(1), is(2));
         assertThat(linkedContainer.get(4), is(5));
+    }
+
+    @Test
+    public void whenAddElementAddToHeadThenGetIt() {
+        linkedContainer.addToHead(6);
+        assertThat(linkedContainer.get(0), is(6));
+    }
+
+    /**
+     * whenRemoveLastElementThemReturnNewLastElement.
+     */
+    @Test
+    public void whenRemoveFirstElementThemReturnNewFirstElement() {
+        assertThat(linkedContainer.removeFirst(), is(2));
     }
 
     /**
@@ -73,7 +87,7 @@ public class LinkedContainerTest {
     public void whenTryConcurrentModifyThenReturnException() {
         Iterator<Integer> it = linkedContainer.iterator();
         it.next();
-        linkedContainer.add(6);
+        linkedContainer.addToTail(6);
         it.next();
     }
 

@@ -29,7 +29,7 @@ public class SimpleQueue<T> {
      * @param value - T.
      */
     public void push(T value){
-        simpleQueue.add(value);
+        simpleQueue.addToTail(value);
         this.size++;
     }
 

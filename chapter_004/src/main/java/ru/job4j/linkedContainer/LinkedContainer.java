@@ -13,8 +13,17 @@ import java.util.NoSuchElementException;
 public class LinkedContainer<E> implements Iterable<E> {
     private int size = 0;
     private int modCount = 0;
-    private Node<E> firstNode;
-    private Node<E> lastNode;
+    private Node<E> head;
+    private Node<E> tail;
+
+    /**
+     * Constructor for LinkedContainer.
+     */
+    public LinkedContainer() {
+        this.head = new Node<>(null, null, null);
+        this.tail = new Node<>(null, head, null);
+        this.head.next = tail;
+    }
 
 
     /**
@@ -22,7 +31,7 @@ public class LinkedContainer<E> implements Iterable<E> {
      * @param <E>.
      */
     private class Node<E> {
-        E date;
+        E value;
         Node<E> next;
         Node<E> prev;
 
@@ -33,28 +42,34 @@ public class LinkedContainer<E> implements Iterable<E> {
          * @param next - Node<E>.
          */
         Node(E current, Node<E> prev, Node<E> next) {
-            this.date = current;
+            this.value = current;
             this.prev = prev;
             this.next = next;
         }
     }
 
     /**
-     * add.
+     * addToTail.
      * @param value - E.
      */
-    public void add(E value) {
-        if (size == 0) {
-            this.firstNode = new Node<>(value, null, null);
-        } else if (size == 1) {
-            this.lastNode = new Node<>(value, firstNode, null);
-            firstNode.next = lastNode;
-        } else {
-            Node<E> newNode = new Node<>(value,lastNode, null );
-            Node<E> node = lastNode;
-            lastNode = newNode;
-            node.next = lastNode;
-        }
+    public void addToTail(E value) {
+        Node<E> newNode = tail;
+        newNode.value = value;
+        tail = new Node<>(null, newNode, null);
+        newNode.next = tail;
+        this.modCount++;
+        this.size++;
+    }
+
+    /**
+     * addToHead.
+     * @param value - E.
+     */
+    public void addToHead(E value) {
+        Node<E> newNode = head;
+        newNode.value = value;
+        head = new Node<>(null, null, newNode);
+        newNode.prev = head;
         this.modCount++;
         this.size++;
     }
@@ -67,25 +82,17 @@ public class LinkedContainer<E> implements Iterable<E> {
     public E get(int index) {
         Node<E> result;
         if (index > (size / 2)) {
-            result = lastNode;
+            result = tail.prev;
             for (int i = size - 1; i > index; i--) {
                 result = result.prev;
             }
         } else {
-            result = firstNode;
+            result = this.head.next;
             for (int i = 0; i < index; i++) {
                 result = result.next;
             }
         }
-        return result.date;
-    }
-
-    /**
-     * getLast.
-     * @return E.
-     */
-    public E getLast() {
-        return this.lastNode.date;
+        return result.value;
     }
 
     /**
@@ -93,20 +100,13 @@ public class LinkedContainer<E> implements Iterable<E> {
      * @return E.
      */
     public E removeLast() {
-        E result = null;
-        if (this.size == 1) {
-            firstNode = null;
-        } else if (this.size == 2) {
-            firstNode.next = null;
-            result = firstNode.date;
-        } else {
-            Node<E> current = lastNode.prev;
-            current.next = null;
-            lastNode = current;
-            result = lastNode.date;
-        }
-        this.size--;
-        return result;
+         if (this.size == 0) {
+             throw new NoSuchElementException();
+         }
+         tail.prev = tail.prev.prev;
+         this.size--;
+         this.modCount++;
+        return tail.prev.value;
     }
 
     /**
@@ -114,21 +114,13 @@ public class LinkedContainer<E> implements Iterable<E> {
      * @return E.
      */
     public E removeFirst() {
-        E result = null;
-        if (this.size == 1) {
-            firstNode = null;
-        } else if (this.size == 2) {
-            lastNode.prev = null;
-            firstNode = lastNode;
-            result = firstNode.date;
-        } else {
-            Node<E> current = firstNode.next;
-            current.prev = null;
-            firstNode = current;
-            result = firstNode.date;
+        if (this.size == 0) {
+            throw new NoSuchElementException();
         }
+        head.next = head.next.next;
         this.size--;
-        return result;
+        this.modCount++;
+        return head.next.value;
     }
 
     /**
@@ -139,7 +131,7 @@ public class LinkedContainer<E> implements Iterable<E> {
     public Iterator<E> iterator() {
         return new Iterator<E>() {
 
-            private Node<E> current = firstNode;
+            private Node<E> current = head.next;
             private int modIndicator = modCount;
 
             /**
@@ -148,7 +140,7 @@ public class LinkedContainer<E> implements Iterable<E> {
              */
             @Override
             public boolean hasNext() {
-                return current != null;
+                return current != tail;
             }
 
             /**
@@ -157,7 +149,7 @@ public class LinkedContainer<E> implements Iterable<E> {
              */
             @Override
             public E next() {
-                if (current == null) {
+                if (current == tail) {
                     throw new NoSuchElementException();
                 }
                 if (modCount != modIndicator) {
@@ -165,7 +157,7 @@ public class LinkedContainer<E> implements Iterable<E> {
                 }
                 Node<E> result = current;
                 current = current.next;
-                return result.date;
+                return result.value;
             }
         };
     }
