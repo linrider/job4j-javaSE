@@ -1,5 +1,5 @@
 /**
- * Package for SimpleArrayTest task.
+ * Package for SimpleListTest task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 21.05.18

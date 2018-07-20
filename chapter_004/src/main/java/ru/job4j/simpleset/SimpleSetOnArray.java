@@ -1,6 +1,6 @@
 package ru.job4j.simpleset;
 /**
- * SimpleList for task "1. Реализовать коллекцию Set на массиве [#996]".
+ * SimpleSetOnArray for task "1. Реализовать коллекцию Set на массиве [#996]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 19.07.18.
@@ -9,13 +9,13 @@ import java.util.Iterator;
 
 import ru.job4j.simplelist.SimpleList;
 
-public class SimpleSet<T> implements Iterable<T> {
+public class SimpleSetOnArray<T> implements Iterable<T> {
     private SimpleList<T> set;
 
     /**
-     * Constructor for SimpleSet.
+     * Constructor for SimpleSetOnArray.
      */
-    public SimpleSet() {
+    public SimpleSetOnArray() {
         this.set = new SimpleList<>();
     }
 

@@ -1,4 +1,4 @@
-package ru.job4j.simplearraylist;
+package ru.job4j.simplelinkedlist;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -7,20 +7,20 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
- * SimpleArrayTest for task "5.3.0 Создать метод delete для односвязного списка [#51424]".
+ * SimpleListTest for task "5.3.0 Создать метод delete для односвязного списка [#51424]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 23.06.18.
  */
-public class SimpleArrayListTest {
-    private SimpleArrayList<Integer> list;
+public class SimpleLinkedListTest {
+    private SimpleLinkedList<Integer> list;
 
     /**
      * beforeTest.
      */
     @Before
     public void beforeTest() {
-        list = new SimpleArrayList<>();
+        list = new SimpleLinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);

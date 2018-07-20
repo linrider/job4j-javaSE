@@ -1,5 +1,5 @@
 /**
- * Package for SimpleSet task.
+ * Package for SimpleSetOnArray task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 19.07.18

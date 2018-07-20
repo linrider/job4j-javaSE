@@ -1,14 +1,14 @@
-package ru.job4j.simplearraylist;
+package ru.job4j.simplelinkedlist;
 
 import java.util.NoSuchElementException;
 
 /**
- * SimpleArrayList for task "5.3.0 Создать метод delete для односвязного списка [#51424]".
+ * SimpleLinkedList for task "5.3.0 Создать метод delete для односвязного списка [#51424]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 23.06.18.
  */
-public class SimpleArrayList<E> {
+public class SimpleLinkedList<E> {
     private int size;
     private Node<E> first;
 

@@ -37,7 +37,7 @@ public class SimpleList<E> implements Iterable<E> {
     }
 
     /**
-     * add.
+     * addToTail.
      * @param value - E.
      */
     public void add(E value) {

@@ -18,7 +18,7 @@ public abstract class AbstractStore<T extends Base> implements Store<T> {
         this.number = number;
     }
     /**
-     * add.
+     * addToTail.
      * @param model - Base.
      */
     @Override

@@ -124,6 +124,13 @@ public class LinkedContainer<E> implements Iterable<E> {
     }
 
     /**
+     * @return - int.
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
      * Iterator.
      * @return Iterator<E>.
      */

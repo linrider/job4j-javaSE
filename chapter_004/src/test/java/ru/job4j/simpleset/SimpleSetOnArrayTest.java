@@ -9,23 +9,23 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
- * SimpleListTest for task "1. Реализовать коллекцию Set на массиве [#996]".
+ * SimpleSetOnArrayTest for task "1. Реализовать коллекцию Set на массиве [#996]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 19.07.18.
  */
-public class SimpleSetTest {
-    SimpleSet<String> simpleSet = new SimpleSet<>();
+public class SimpleSetOnArrayTest {
+    SimpleSetOnArray<String> simpleSetOnArray = new SimpleSetOnArray<>();
 
     /**
      * setInit.
      */
     @Before
     public void setInit() {
-        simpleSet.add("One");
-        simpleSet.add("Two");
-        simpleSet.add("Three");
-        simpleSet.add("Four");
+        simpleSetOnArray.add("One");
+        simpleSetOnArray.add("Two");
+        simpleSetOnArray.add("Three");
+        simpleSetOnArray.add("Four");
 
     }
 
@@ -34,8 +34,8 @@ public class SimpleSetTest {
      */
     @Test
     public void whenTryToAddExistingElementThenGetTheSameSize() {
-        simpleSet.add("One");
-        assertThat(simpleSet.size(), is(4));
+        simpleSetOnArray.add("One");
+        assertThat(simpleSetOnArray.size(), is(4));
     }
 
     /**
@@ -43,7 +43,7 @@ public class SimpleSetTest {
      */
     @Test
     public void whenCreateIteratorThenReturnHasNextResultsAndValues() {
-        Iterator<String> it = simpleSet.iterator();
+        Iterator<String> it = simpleSetOnArray.iterator();
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is("One"));
         assertThat(it.hasNext(), is(true));

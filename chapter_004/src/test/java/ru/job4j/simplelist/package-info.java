@@ -1,5 +1,5 @@
 /**
- * Package for SimpleSetTest task.
+ * Package for SimpleSetOnArrayTest task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 19.07.18

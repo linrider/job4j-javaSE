@@ -8,7 +8,7 @@ package ru.job4j.store;
 public interface Store<T extends Base> {
 
     /**
-     * add.
+     * addToTail.
      * @param model
      */
     void add(T model);

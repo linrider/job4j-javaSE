@@ -1,7 +1,7 @@
 /**
- * Package for SimpleArrayList task.
+ * Package for SimpleLinkedList task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 23.06.18
  */
-package ru.job4j.simplearraylist;
+package ru.job4j.simplelinkedlist;

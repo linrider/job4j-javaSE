@@ -9,12 +9,12 @@ import java.util.Iterator;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.is;
 /**
- * SimpleArrayList for task "5.3.1. Создать динамический список на базе массива [#158]".
+ * SimpleLinkedList for task "5.3.1. Создать динамический список на базе массива [#158]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 24.06.18.
  */
-public class SimpleArrayTest {
+public class SimpleListTest {
     SimpleList<Integer> simpleList = new SimpleList<>(3);
 
     /**

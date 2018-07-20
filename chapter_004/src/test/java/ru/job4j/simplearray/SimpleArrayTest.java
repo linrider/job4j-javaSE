@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
 /**
- * SimpleArrayTest.
+ * SimpleListTest.
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com)
  * @version $Id$
  * @since 21.05.18
