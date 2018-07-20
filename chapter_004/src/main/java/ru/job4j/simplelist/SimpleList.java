@@ -1,4 +1,4 @@
-package ru.job4j.dynamicarray;
+package ru.job4j.simplelist;
 
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * DynamicArray for task "5.3.1. Создать динамический список на базе массива [#158]".
+ * SimpleList for task "5.3.1. Создать динамический список на базе массива [#158]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 24.06.18.
  */
-public class DynamicArray<E> implements Iterable<E> {
+public class SimpleList<E> implements Iterable<E> {
 
     private Object[] container;
     private int position;
@@ -19,19 +19,19 @@ public class DynamicArray<E> implements Iterable<E> {
     private int size = 0;
 
     /**
-     * Constructor for DynamicArray without params.
+     * Constructor for SimpleList without params.
      */
-    public DynamicArray() {
+    public SimpleList() {
         this.container = new Object[10];
         position = 0;
     }
 
 
     /**
-     * DynamicArray.
+     * SimpleList.
      * @param size - int.
      */
-    public DynamicArray(int size) {
+    public SimpleList(int size) {
         this.container = new Object[size];
         position = 0;
     }

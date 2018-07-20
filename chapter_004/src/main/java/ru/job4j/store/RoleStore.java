@@ -1,7 +1,5 @@
 package ru.job4j.store;
 
-import ru.job4j.simplearray.SimpleArray;
-
 /**
  * RoleStore for task "5.2.2. Реализовать Store<T extends Base>".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).

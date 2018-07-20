@@ -1,4 +1,4 @@
-package ru.job4j.dynamicarray;
+package ru.job4j.simplelist;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,18 +14,18 @@ import static org.hamcrest.Matchers.is;
  * @version $Id$.
  * @since 24.06.18.
  */
-public class DynamicArrayTest {
-    DynamicArray<Integer> dynamicArray = new DynamicArray<>(3);
+public class SimpleArrayTest {
+    SimpleList<Integer> simpleList = new SimpleList<>(3);
 
     /**
      * setUp.
      */
     @Before
     public void setUP() {
-        dynamicArray.add(1);
-        dynamicArray.add(2);
-        dynamicArray.add(3);
-        dynamicArray.add(4);
+        simpleList.add(1);
+        simpleList.add(2);
+        simpleList.add(3);
+        simpleList.add(4);
     }
 
     /**
@@ -33,7 +33,7 @@ public class DynamicArrayTest {
      */
     @Test
     public void whenReturnSizeOfListAfterRecentlyAddedElementsReturn() {
-        assertThat(dynamicArray.size(), is(4));
+        assertThat(simpleList.size(), is(4));
     }
 
     /**
@@ -41,10 +41,10 @@ public class DynamicArrayTest {
      */
     @Test
     public void whenReturnEveryMembersOfList() {
-        assertThat(dynamicArray.get(0), is(1));
-        assertThat(dynamicArray.get(1), is(2));
-        assertThat(dynamicArray.get(2), is(3));
-        assertThat(dynamicArray.get(3), is(4));
+        assertThat(simpleList.get(0), is(1));
+        assertThat(simpleList.get(1), is(2));
+        assertThat(simpleList.get(2), is(3));
+        assertThat(simpleList.get(3), is(4));
     }
 
     /**
@@ -52,7 +52,7 @@ public class DynamicArrayTest {
      */
     @Test
     public void whenCreateIteratorThenReturnHasNextResultsAndValues() {
-        Iterator<Integer> it = dynamicArray.iterator();
+        Iterator<Integer> it = simpleList.iterator();
         assertThat(it.hasNext(), is(true));
         assertThat(it.next(), is(1));
         assertThat(it.hasNext(), is(true));
@@ -69,9 +69,9 @@ public class DynamicArrayTest {
      */
     @Test (expected = ConcurrentModificationException.class)
     public void whenTryConcurrentModifyThenReturnException() {
-        Iterator<Integer> it = dynamicArray.iterator();
+        Iterator<Integer> it = simpleList.iterator();
         it.next();
-        dynamicArray.add(5);
+        simpleList.add(5);
         it.next();
     }
 }

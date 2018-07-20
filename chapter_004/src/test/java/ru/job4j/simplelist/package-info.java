@@ -1,7 +1,7 @@
 /**
- * Package for DynamicArray task.
+ * Package for SimpleSetTest task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
- * @since 24.06.18
+ * @since 19.07.18
  */
-package ru.job4j.dynamicarray;
+package ru.job4j.simplelist;
