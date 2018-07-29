@@ -10,22 +10,7 @@ import java.util.Iterator;
 import ru.job4j.simplelist.SimpleList;
 
 public class SimpleSetOnArray<T> implements Iterable<T> {
-    private SimpleList<T> set;
-
-    /**
-     * Constructor for SimpleSetOnArray.
-     */
-    public SimpleSetOnArray() {
-        this.set = new SimpleList<>();
-    }
-
-    /**
-     * size.
-     * @return - int.
-     */
-    public int size() {
-        return set.size();
-    }
+    private SimpleList<T> set = new SimpleList<>();
 
 
     /**
@@ -33,20 +18,16 @@ public class SimpleSetOnArray<T> implements Iterable<T> {
      * @param value - T.
      */
     public void add(T value) {
-        if (set.size() == 0) {
+        Iterator<T> it = set.iterator();
+        boolean uniqueness = true;
+        while (it.hasNext()) {
+            if (value.hashCode() == it.next().hashCode()) {
+                uniqueness = false;
+                break;
+            }
+        }
+        if (uniqueness) {
             this.set.add(value);
-        } else {
-            Iterator<T> it = set.iterator();
-            boolean uniqueness = true;
-            while (it.hasNext()) {
-                if (value.hashCode() == it.next().hashCode()) {
-                    uniqueness = false;
-                    break;
-                }
-            }
-            if (uniqueness) {
-                this.set.add(value);
-            }
         }
     }
 

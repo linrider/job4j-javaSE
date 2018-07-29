@@ -10,14 +10,7 @@ import java.util.Iterator;
  * @since 20.07.18.
  */
 public class SimpleSetOnLinkedList<T> implements Iterable<T> {
-    LinkedContainer<T> set;
-
-    /**
-     * Constructor for SimpleSetOnLinkedList.
-     */
-    public SimpleSetOnLinkedList() {
-        this.set = new LinkedContainer<>();
-    }
+    private LinkedContainer<T> set = new LinkedContainer<>();
 
     /**
      * size.
@@ -32,21 +25,18 @@ public class SimpleSetOnLinkedList<T> implements Iterable<T> {
      * @param value - T.
      */
     public void add(T value) {
-        if (set.size() == 0) {
-            this.set.addToTail(value);
-        } else {
-            Iterator<T> it = set.iterator();
-            boolean uniqueness = true;
-            while (it.hasNext()) {
-                if (value.hashCode() == it.next().hashCode()) {
-                    uniqueness = false;
-                    break;
-                }
-            }
-            if (uniqueness) {
-                this.set.addToTail(value);
+        Iterator<T> it = set.iterator();
+        boolean uniqueness = true;
+        while (it.hasNext()) {
+            if (value.hashCode() == it.next().hashCode()) {
+                uniqueness = false;
+                break;
             }
         }
+        if (uniqueness) {
+            this.set.addToTail(value);
+        }
+
     }
 
     /**
