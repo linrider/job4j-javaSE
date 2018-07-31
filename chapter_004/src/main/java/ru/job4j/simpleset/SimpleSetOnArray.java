@@ -40,4 +40,11 @@ public class SimpleSetOnArray<T> implements Iterable<T> {
         return set.iterator();
     }
 
+    /**
+     * size.
+     * @return int.
+     */
+    public int size() {
+        return set.size();
+    }
 }
