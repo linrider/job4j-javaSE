@@ -40,20 +40,20 @@ public class User {
         System.out.println(users);
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof User)) return false;
-//        User user = (User) o;
-//        return children == user.children &&
-//                Objects.equals(name, user.name) &&
-//                Objects.equals(birthday, user.birthday);
-////    }
-////
     @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + children + birthday.hashCode();
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return children == user.children &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(birthday, user.birthday);
     }
+
+//    @Override
+//    public int hashCode() {
+//        int result = name != null ? name.hashCode() : 0;
+//        result = 31 * result + children + birthday.hashCode();
+//        return result;
+//    }
 }
