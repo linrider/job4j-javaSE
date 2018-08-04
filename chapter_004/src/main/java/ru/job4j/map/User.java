@@ -40,6 +40,11 @@ public class User {
         System.out.println(users);
     }
 
+    /**
+     * equals.
+     * @param o - Object.
+     * @return boolean.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,10 +55,14 @@ public class User {
                 Objects.equals(birthday, user.birthday);
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = name != null ? name.hashCode() : 0;
-//        result = 31 * result + children + birthday.hashCode();
-//        return result;
-//    }
+    /**
+     * hashCode.
+     * @return int.
+     */
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + children + birthday.hashCode();
+        return result;
+    }
 }
