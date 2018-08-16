@@ -31,8 +31,8 @@ public class User {
     public static void main(String[] args) {
         User user1 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
         User user2 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
-        System.out.println(user1.hashCode());
-        System.out.println(user2.hashCode());
+        System.out.println(user1.hashCode() & 15);
+        System.out.println(user2.hashCode() & 15);
 
         Map<User, Object> users = new HashMap<>();
         users.put(user1, new Object());
@@ -45,24 +45,24 @@ public class User {
      * @param o - Object.
      * @return boolean.
      */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return children == user.children &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(birthday, user.birthday);
-    }
-
-    /**
-     * hashCode.
-     * @return int.
-     */
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + children + birthday.hashCode();
-        return result;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof User)) return false;
+//        User user = (User) o;
+//        return children == user.children &&
+//                Objects.equals(name, user.name) &&
+//                Objects.equals(birthday, user.birthday);
+//    }
+//
+//    /**
+//     * hashCode.
+//     * @return int.
+//     */
+//    @Override
+//    public int hashCode() {
+//        int result = name != null ? name.hashCode() : 0;
+//        result = 31 * result + children + birthday.hashCode();
+//        return result;
+//    }
 }
