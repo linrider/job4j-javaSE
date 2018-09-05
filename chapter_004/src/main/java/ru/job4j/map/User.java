@@ -27,18 +27,24 @@ public class User {
 
     /**
      * @param args - String[].
-//     */
-//    public static void main(String[] args) {
-//        User user1 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
-//        User user2 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
-//        System.out.println(user1.hashCode() & 15);
-//        System.out.println(user2.hashCode() & 15);
-//
-//        Map<User, Object> users = new HashMap<>();
-//        users.put(user1, new Object());
-//        users.put(user2, new Object());
-//        System.out.println(users);
-//    }
+     */
+    public static void main(String[] args) {
+        User user1 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
+        User user2 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
+        int hash1 = user1.hashCode();
+        System.out.println(Integer.toBinaryString(hash1));
+        int hash1Moved = hash1 >>> 16;
+        System.out.println("0000000000000000" + Integer.toBinaryString(hash1Moved));
+        int hashXORed = hash1 ^ hash1Moved;
+        System.out.println(Integer.toBinaryString(hashXORed));
+        System.out.println(hashXORed);
+       // System.out.println(user2.hashCode() & 15);
+
+        Map<User, Object> users = new HashMap<>();
+        users.put(user1, new Object());
+        users.put(user2, new Object());
+        System.out.println(users);
+    }
 
     /**
      * equals.
@@ -59,10 +65,10 @@ public class User {
      * hashCode.
      * @return int.
      */
-//    @Override
-//    public int hashCode() {
-//        int result = name != null ? name.hashCode() : 0;
-//        result = 31 * result + children + birthday.hashCode();
-//        return result;
-//    }
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + children + birthday.hashCode();
+        return result;
+    }
 }
