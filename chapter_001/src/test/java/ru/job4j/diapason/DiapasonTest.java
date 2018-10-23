@@ -23,6 +23,8 @@ public class DiapasonTest {
      */
     @Test
     public void whenLinearFunctionSentThenGotItsValues() {
+        Diapason diap = new Diapason();
+        List<Double> buffer = new ArrayList<>();
         buffer.addAll(diap.diapason(1, 5, arg -> 2 * arg));
         assertThat(buffer, is(Arrays.asList(2D, 4D, 6D, 8D, 10D)));
     }
@@ -32,6 +34,8 @@ public class DiapasonTest {
      */
     @Test
     public void whenQuadraticFunctionSentThenGotItsValues() {
+        Diapason diap = new Diapason();
+        List<Double> buffer = new ArrayList<>();
         buffer.addAll(diap.diapason(1, 5, arg -> Math.pow(arg, 2)));
         assertThat(buffer, is(Arrays.asList(1D, 4D, 9D, 16D, 25D)));
     }
@@ -41,6 +45,8 @@ public class DiapasonTest {
      */
     @Test
     public void whenLogarithmicFunctionSentThenGotItsValues() {
+        Diapason diap = new Diapason();
+        List<Double> buffer = new ArrayList<>();
         buffer.addAll(diap.diapason(1, 5, arg -> Math.round(Math.log(arg) * 100) / 100D));
         assertThat(buffer, is(Arrays.asList(0D, 0.69D, 1.1D, 1.39D, 1.61D)));
     }
