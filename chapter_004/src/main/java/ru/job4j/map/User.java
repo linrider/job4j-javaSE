@@ -32,13 +32,16 @@ public class User {
         User user1 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
         User user2 = new User("john", 1, new GregorianCalendar(1972, 8, 01));
         int hash1 = user1.hashCode();
-        System.out.println(Integer.toBinaryString(hash1));
-        int hash1Moved = hash1 >>> 16;
-        System.out.println("0000000000000000" + Integer.toBinaryString(hash1Moved));
-        int hashXORed = hash1 ^ hash1Moved;
-        System.out.println(Integer.toBinaryString(hashXORed));
-        System.out.println(hashXORed);
+//        System.out.println(Integer.toBinaryString(hash1));
+//        int hash1Moved = hash1 >>> 16;
+//        System.out.println("0000000000000000" + Integer.toBinaryString(hash1Moved));
+//        int hashXORed = hash1 ^ hash1Moved;
+//        System.out.println(Integer.toBinaryString(hashXORed));
+//        System.out.println(hashXORed);
        // System.out.println(user2.hashCode() & 15);
+        int var = 0;
+        var = user1.hashCode() ^ var >>> 16;
+        System.out.println(var);
 
         Map<User, Object> users = new HashMap<>();
         users.put(user1, new Object());
