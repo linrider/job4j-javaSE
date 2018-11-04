@@ -1,10 +1,14 @@
 package ru.job4j.chessboard;
 
-public class Bishop extends Figure {
+public class Bishop extends Figure implements Cloneable{
 
     public Bishop(Cell position) {
         super(position);
         }
+
+        private static Cell addNewStep(int x, int y) {
+            return  new Cell(x, y);
+    }
 
     @Override
     public Cell[] way(Cell destination) throws ImpossibleMoveException {
@@ -19,23 +23,19 @@ public class Bishop extends Figure {
 
         if (destination.posX > x && destination.posY > y) {
             for (int i = 0; i < way.length; i++) {
-                way[i].posX = ++x;
-                way[i].posY = ++y;
+                way[i] = addNewStep(++x, ++y);
             }
         } else if (destination.posX > x && destination.posY < y) {
-            for (Cell aWay : way) {
-                aWay.posX = ++x;
-                aWay.posY = --y;
+            for (int i = 0; i < way.length; i++) {
+                way[i] = addNewStep(++x, --y);
             }
         } else if (destination.posX < x && destination.posY > y) {
-            for (Cell aWay : way) {
-                aWay.posX = --x;
-                aWay.posY = ++y;
+            for (int i = 0; i < way.length; i++) {
+                way[i] = addNewStep(--x, ++y);
             }
         } else if (destination.posX < x && destination.posY < y) {
-            for (Cell aWay : way) {
-                aWay.posX = --x;
-                aWay.posY = --y;
+            for (int i = 0; i < way.length; i++) {
+                way[i] = addNewStep(--x, --y);
             }
         }
 
