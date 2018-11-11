@@ -7,10 +7,10 @@ import java.util.*;
  * @version $Id$.
  * @since 02.08.18.
  */
-public class User {
-    private String name;
-    private int children;
-    private Calendar birthday;
+    public class User {
+        private String name;
+        private int children;
+        private Calendar birthday;
 
 
     /**
@@ -68,10 +68,10 @@ public class User {
      * hashCode.
      * @return int.
      */
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + children + birthday.hashCode();
-        return result;
-    }
+//    @Override
+//    public int hashCode() {
+//        int result = name != null ? name.hashCode() : 0;
+//        result = 31 * result + children + birthday.hashCode();
+//        return result;
+//    }
 }
