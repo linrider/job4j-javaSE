@@ -8,8 +8,15 @@ import java.util.Queue;
 public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E> {
     private Node<E> root;
 
+    public Tree(E root) {
+        this.root = new Node<E>(root);
+    }
+
+
     @Override
     public boolean add(E parent, E child) {
+        Optional<Node<E>> currentNode = findBy(parent);
+        currentNode.get().add(new Node<>(child));
         return false;
     }
 
@@ -33,6 +40,16 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Iterator<E>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public E next() {
+                return null;
+            }
+        };
     }
 }

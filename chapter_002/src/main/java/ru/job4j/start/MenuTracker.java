@@ -50,11 +50,12 @@ public class MenuTracker {
      * showMenu.
      */
     public void showMenu() {
-        for (UserAction action : this.actions) {
-            if (action != null) {
-                System.out.println(action.info());
-            }
-        }
+        actions.forEach(action -> System.out.println(action.info()));
+//        for (UserAction action : this.actions) {
+//            if (action != null) {
+//                System.out.println(action.info());
+//            }
+//        }
         this.select(input.ask(("Enter an action: "), range));
     }
 

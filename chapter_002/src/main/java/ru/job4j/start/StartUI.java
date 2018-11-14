@@ -10,10 +10,6 @@ public class StartUI {
     private Input input;
     private Tracker tracker;
 
-    public StartUI() {
-
-    }
-
     /**
      * StartUI constructor.
      * @param input - Input.
@@ -22,7 +18,6 @@ public class StartUI {
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
-
     }
 
     /**
