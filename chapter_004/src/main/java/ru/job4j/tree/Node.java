@@ -20,15 +20,6 @@ public class Node<E extends Comparable<E>> {
     }
 
     /**
-     * getChildren.
-     * getter for children.
-     * @return List<Node<E>>.
-     */
-    public List<Node<E>> getChildren() {
-        return children;
-    }
-
-    /**
      * getValue.
      * getter for value of Node.
      * @return E.

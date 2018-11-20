@@ -65,6 +65,34 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
     }
 
     /**
+     * isBinary.
+     * корень дерева заносится в очередь.
+     * текущий узел current извлекается из головы очереди.
+     * если у него более 2х листьев результату присваивается "ложь".
+     * и цикл прерывается.
+     * если текущий узел проходит тест на бинарность, то его потомки добавляются в очередь.
+     * откуда впоследствии извлекаются и проверяются на бинарность.
+     * @return boolean.
+     */
+    public boolean isBinary() {
+        boolean result = true;
+        Queue<Node<E>> nodeQueue = new LinkedList<>();
+        nodeQueue.offer(this.root);
+        while (!nodeQueue.isEmpty()) {
+            Node<E> current = nodeQueue.poll();
+            if (current.leaves().size() > 2) {
+                result = false;
+                break;
+            } else {
+                for (Node<E> leaf : current.leaves()) {
+                    nodeQueue.offer(leaf);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
      * Iterator for Tree.
      * @return Iterator<E>.
      */
@@ -72,7 +100,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             private Node<E> currentNode = root;
-            private List<E> used = new ArrayList<>();
             private int counter = 0;
             Queue<Node<E>> queue = new LinkedList<>();
             private int modIndicator = modCount;
@@ -84,7 +111,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
              * @return Node<E>.
              */
             private Node<E> nextNode(Node<E> node) {
-                for (Node<E> shuttle : node.getChildren()) {
+                for (Node<E> shuttle : node.leaves()) {
                     queue.offer(shuttle);
                 }
                 return queue.poll();
@@ -96,7 +123,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
              */
             @Override
             public boolean hasNext() {
-                return this.counter < size;
+                return this.counter <= size;
             }
 
             /**
@@ -112,7 +139,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
                     throw new ConcurrentModificationException();
                 }
                 Node<E> result = currentNode;
-                this.used.add(result.getValue());
                 currentNode = this.nextNode(currentNode);
                 counter++;
                 return result.getValue();
