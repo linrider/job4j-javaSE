@@ -31,7 +31,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>,  Iterable<E
     @Override
     public boolean add(E parent, E child) {
         boolean result = true;
-        if (!findBy(child).isPresent()) {
+        if (!findBy(child).isPresent() && findBy(parent).isPresent()) {
             Optional<Node<E>> currentNode = findBy(parent);
             currentNode.get().add(new Node<>(child));
             this.size++;
