@@ -1,14 +1,17 @@
 package ru.job4j.statistics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 /**
- * Store class for task "Статистика по коллекции. [#45889]".
+ * Analize class for task "Статистика по коллекции. [#45889]".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 25.11.18.
  */
-public class Store {
+public class Analize {
     private List<User> previous = new ArrayList<>();
     private List<User> current = new ArrayList<>();
 
@@ -32,27 +35,56 @@ public class Store {
     }
 
     /**
+     * Info internal class.
+     */
+    public static class Info {
+        int added = 0;
+        int changed = 0;
+        int deleted = 0;
+
+        /**
+         * Info constructor.
+         * @param added - int.
+         * @param deleted - int.
+         * @param changed - int.
+         */
+        public Info(int added, int deleted, int changed) {
+            this.added = added;
+            this.changed = changed;
+            this.deleted = deleted;
+        }
+    }
+
+    /**
      * diff.
      * @return Info.
      */
     public Info diff() {
+        int added = 0;
+        int deleted =0;
+        int changed =0;
         int diff = current.size() - previous.size();
-        int added =0;
-        int changed = 0;
-        int deleted = 0;
         if (diff > 0) {
             added = diff;
         } else if (diff < 0){
             deleted = Math.abs(diff);
         }
-        for (User cur : current) {
-            for (User prev : previous) {
-                if (cur.id == prev.id && !cur.name.equals(prev.name)) {
-                    changed++;
+        HashMap<Integer, String> previousMap = new HashMap<>();
+        for (User shuttle : previous) {
+            previousMap.put(shuttle.id, shuttle.name);
+        }
+        HashMap<Integer, String> currentMap = new HashMap<>();
+        for (User shuttle : current) {
+            currentMap.put(shuttle.id, shuttle.name);
+        }
+        for (Map.Entry<Integer, String> pair : previousMap.entrySet()) {
+            if (currentMap.containsKey(pair.getKey())) {
+                if (!currentMap.get(pair.getKey()).equals(pair.getValue())) {
+                changed++;
                 }
             }
         }
-        return new Info(added, changed, deleted);
+        return new Info(added, deleted, changed);
     }
 
     /**
