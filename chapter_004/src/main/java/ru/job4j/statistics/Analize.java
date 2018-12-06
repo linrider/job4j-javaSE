@@ -61,14 +61,7 @@ public class Analize {
      */
     public Info diff() {
         int added = 0;
-        int deleted =0;
         int changed =0;
-        int diff = current.size() - previous.size();
-        if (diff > 0) {
-            added = diff;
-        } else if (diff < 0){
-            deleted = Math.abs(diff);
-        }
         HashMap<Integer, String> previousMap = new HashMap<>();
         for (User shuttle : previous) {
             previousMap.put(shuttle.id, shuttle.name);
@@ -77,13 +70,15 @@ public class Analize {
         for (User shuttle : current) {
             currentMap.put(shuttle.id, shuttle.name);
         }
-        for (Map.Entry<Integer, String> pair : previousMap.entrySet()) {
-            if (currentMap.containsKey(pair.getKey())) {
-                if (!currentMap.get(pair.getKey()).equals(pair.getValue())) {
+        for (Map.Entry<Integer, String> pair : currentMap.entrySet()) {
+            String result = previousMap.remove(pair.getKey());
+            if (result == null) {
+                added++;
+            } else if (!result.equals(pair.getValue())) {
                 changed++;
-                }
             }
         }
+        int deleted = previousMap.size();
         return new Info(added, deleted, changed);
     }
 

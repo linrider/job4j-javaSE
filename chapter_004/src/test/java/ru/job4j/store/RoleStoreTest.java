@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 /**
- * UserStoreTest for task "5.2.2. Реализовать Store<T extends Base>".
+ * UserStoreTest for task "5.2.2. Реализовать Analize<T extends Base>".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 11.06.18.

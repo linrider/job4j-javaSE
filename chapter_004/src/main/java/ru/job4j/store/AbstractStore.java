@@ -4,7 +4,7 @@ import ru.job4j.simplearray.SimpleArray;
 
 import java.util.Iterator;
 /**
- * AbstractStore for task "5.2.2. Реализовать Store<T extends Base>".
+ * AbstractStore for task "5.2.2. Реализовать Analize<T extends Base>".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 11.06.18.

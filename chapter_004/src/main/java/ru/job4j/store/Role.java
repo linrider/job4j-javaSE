@@ -1,6 +1,6 @@
 package ru.job4j.store;
 /**
- * Role for task "5.2.2. Реализовать Store<T extends Base>".
+ * Role for task "5.2.2. Реализовать Analize<T extends Base>".
  * @author Wladyslaw Lazin (wladislaw.lazin@gmail.com).
  * @version $Id$.
  * @since 11.06.18.
