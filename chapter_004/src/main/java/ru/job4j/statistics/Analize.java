@@ -1,5 +1,6 @@
 package ru.job4j.statistics;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,15 +67,11 @@ public class Analize {
         for (User shuttle : previous) {
             previousMap.put(shuttle.id, shuttle.name);
         }
-        HashMap<Integer, String> currentMap = new HashMap<>();
         for (User shuttle : current) {
-            currentMap.put(shuttle.id, shuttle.name);
-        }
-        for (Map.Entry<Integer, String> pair : currentMap.entrySet()) {
-            String result = previousMap.remove(pair.getKey());
+            String result = previousMap.remove(shuttle.id);
             if (result == null) {
                 added++;
-            } else if (!result.equals(pair.getValue())) {
+            } else if (!result.equals(shuttle.name)) {
                 changed++;
             }
         }
