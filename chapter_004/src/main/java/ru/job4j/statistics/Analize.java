@@ -1,10 +1,8 @@
 package ru.job4j.statistics;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Analize class for task "Статистика по коллекции. [#45889]".
