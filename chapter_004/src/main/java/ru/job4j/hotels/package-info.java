@@ -1,7 +1,7 @@
 /**
- * Package for arrayCollation task.
+ * Package for Hotels task.
  * @author Wladyslaw Lazin (mailto:wladislaw.lazin@gmail.com)
  * @version $Id$
- * @since 20.03.19
+ * @since 21.03.19
  */
-package ru.job4j.arrayCollation;
+package ru.job4j.hotels;
