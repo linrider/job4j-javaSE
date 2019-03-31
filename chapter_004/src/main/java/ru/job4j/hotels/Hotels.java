@@ -12,9 +12,9 @@ public class Hotels {
     /**
      * @param n - int.
      * @param ratings - List<>Integer>.
-     * @return String.
+     * @return Object[].
      */
-    protected String setStars(int n, List<Integer> ratings) {
+    protected Object[] alocStars(int n, List<Integer> ratings) {
         Map<Integer, Integer> starsMap = new LinkedHashMap<>();
         for (Integer shuttle : ratings) {
             starsMap.put(shuttle, 0);
@@ -31,6 +31,6 @@ public class Hotels {
             starsMap.put(shuttle, stars);
             count++;
         }
-        return starsMap.values().toString();
+        return starsMap.values().toArray();
     }
 }
