@@ -20,8 +20,9 @@ public class HotelsTest {
     @Test
     public void whenAddFiveHotelsThenGetTheirStars() {
         Hotels hotels = new Hotels();
+        int[] result = {4, 2, 5, 3, 1};
         List<Integer> ratings = Arrays.asList(99, 2, 100, 50, 1);
-        assertThat(hotels.setStars(5, ratings), is("[4, 2, 5, 3, 1]"));
+        assertThat(hotels.getStars(5, ratings), is(result));
     }
 
     /**
@@ -30,7 +31,8 @@ public class HotelsTest {
     @Test
     public void whenAddTenHotelsThenGetTheirStars() {
         Hotels hotels = new Hotels();
+        int[] result = {5, 5, 1, 1, 3, 3, 2, 2, 4, 4};
         List<Integer> ratings = Arrays.asList(100, 90, 10, 20, 50, 60, 40, 30, 80, 70);
-        assertThat(hotels.setStars(10, ratings), is("[5, 5, 1, 1, 3, 3, 2, 2, 4, 4]"));
+        assertThat(hotels.getStars(10, ratings), is(result));
     }
 }
