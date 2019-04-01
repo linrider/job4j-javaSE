@@ -14,7 +14,7 @@ public class Hotels {
      * @param ratings - List<>Integer>.
      * @return Object[].
      */
-    protected Object[] getStars(int n, List<Integer> ratings) {
+    protected Object[] alocStars(int n, List<Integer> ratings) {
         Map<Integer, Integer> starsMap = new LinkedHashMap<>();
         for (Integer shuttle : ratings) {
             starsMap.put(shuttle, 0);
