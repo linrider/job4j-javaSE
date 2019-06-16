@@ -9,6 +9,7 @@ package ru.job4j.start;
 public class StartUI {
     private Input input;
     private Tracker tracker;
+    private boolean working = true;
 
     /**
      * StartUI constructor.
@@ -25,12 +26,17 @@ public class StartUI {
      */
     public void init() {
        MenuTracker menu = new MenuTracker(this.input, this.tracker);
-       menu.fillActions();
-       while (true) {
+       menu.fillActions(this);
+       while (this.working) {
            menu.showMenu();
        }
         }
-
+    /**
+     * stop.
+     */
+    public void stop() {
+        this.working = false;
+    }
     /**
      * Main.
      * @param args - String[].

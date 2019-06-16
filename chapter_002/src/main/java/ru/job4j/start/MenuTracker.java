@@ -36,14 +36,14 @@ public class MenuTracker {
     /**"Enter an action: "
      * fillActions.
      */
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(this.input, this.tracker));
         this.actions.add(new ShowAllItems(this.input, this.tracker));
         this.actions.add(new EditItem(this.input, this.tracker));
         this.actions.add(new DeleteItem(this.input, this.tracker));
         this.actions.add(new FindItemById(this.input, this.tracker));
         this.actions.add(new FindItemByName(this.input, this.tracker));
-        this.actions.add(new Exit(this.input, this.tracker));
+        this.actions.add(new Exit(this.input, this.tracker, ui));
     }
 
     /**
@@ -254,15 +254,18 @@ public class MenuTracker {
     public class Exit extends BaseAction {
         private Input input;
         private Tracker tracker;
+        private final StartUI ui;
         /**
          * Exit constructor.
          * @param input - Input.
          * @param tracker - Tracker.
+         * @param ui
          */
-        public Exit(Input input, Tracker tracker) {
+        public Exit(Input input, Tracker tracker, StartUI ui) {
             super(6, "Exit Program: ");
             this.input = input;
             this.tracker = tracker;
+            this.ui = ui;
         }
         /**
          * execute.
@@ -272,7 +275,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             if (input.ask("Are you sure? (y/n): ").equals("y")) {
-                System.exit(0);
+                this.ui.stop();
             }
         }
     }
