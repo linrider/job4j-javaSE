@@ -2,6 +2,7 @@ package ru.job4j.start;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * MenuTracker class.
@@ -19,8 +20,9 @@ public class MenuTracker {
      * MenuTracker constructor.
      * @param input - Input.
      * @param tracker - Tracker.
+     * @param output
      */
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
     }
