@@ -15,16 +15,18 @@ public class MenuTracker {
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
     private int[] range = {0, 1, 2, 3, 4, 5, 6};
+    private final Consumer<String> output;
 
     /**
      * MenuTracker constructor.
      * @param input - Input.
      * @param tracker - Tracker.
-     * @param output
+     * @param output - Consumer.
      */
     public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     /**
@@ -52,12 +54,11 @@ public class MenuTracker {
      * showMenu.
      */
     public void showMenu() {
-        actions.forEach(action -> System.out.println(action.info()));
-//        for (UserAction action : this.actions) {
-//            if (action != null) {
-//                System.out.println(action.info());
-//            }
-//        }
+        for (UserAction action : this.actions) {
+            if (action != null) {
+                output.accept(action.info());
+            }
+        }
         this.select(input.ask(("Enter an action: "), range));
     }
 
@@ -115,10 +116,10 @@ public class MenuTracker {
             List<Item> allItems = tracker.findAll();
             if (allItems.size() != 0) {
                 for (Item item : allItems) {
-                    System.out.println(item.toString());
+                    output.accept(item.toString());
                 }
             } else {
-                System.out.println("List is empty.");
+                output.accept("List is empty.");
             }
         }
     }
@@ -178,9 +179,9 @@ public class MenuTracker {
             if (tracker.findById(id) != null) {
                 Item item = tracker.findById(id);
                 tracker.delete(item);
-                System.out.println("Item was deleted.");
+                output.accept("Item was deleted.");
             } else {
-                System.out.println("Nothing was found.");
+                output.accept("Nothing was found.");
             }
         }
     }
@@ -210,9 +211,9 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             Item item = tracker.findById(input.ask("Enter searching item's id: "));
             if (item != null) {
-                System.out.println(item.toString());
+                output.accept(item.toString());
             } else {
-                System.out.println("Nothing was found.");
+                output.accept("Nothing was found.");
             }
         }
     }
@@ -242,10 +243,10 @@ public class MenuTracker {
             List<Item> items = tracker.findByName(input.ask("Enter searching name: "));
             if (items.size() != 0) {
                 for (Item item : items) {
-                    System.out.println(item.toString());
+                    output.accept(item.toString());
                 }
             } else {
-                System.out.println("Nothing was found.");
+                output.accept("Nothing was found.");
             }
         }
     }

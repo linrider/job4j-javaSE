@@ -18,7 +18,7 @@ public class StartUI {
      * StartUI constructor.
      * @param input - Input.
      * @param tracker - Tracker.
-     * @param output
+     * @param output - Consumer.
      */
     public StartUI(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
@@ -49,6 +49,6 @@ public class StartUI {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         Input input = new ValidateInput();
-        new StartUI(input, tracker, output).init();
+        new StartUI(input, tracker, System.out::println).init();
     }
 }
